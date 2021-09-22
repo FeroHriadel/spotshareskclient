@@ -20,6 +20,7 @@ import EditCategory from './pages/EditCategory';
 import CreateTag from './pages/CreateTag';
 import ManageTags from './pages/ManageTags';
 import EditTag from './pages/EditTag';
+import AddSpot from './pages/AddSpot';
 import NotFound from './pages/NotFound';
 
 
@@ -60,6 +61,7 @@ const App = () => {
           <AdminRoute exact path='/createtag' component={CreateTag} />
           <AdminRoute exact path='/managetags' component={ManageTags} />
           <AdminRoute exact path='/edittag/:tagslug' component={EditTag} />
+          <PrivateRoute exact path='/addspot' component={AddSpot} />
           <Route component={NotFound} />
         </Switch>
       </ApolloProvider>

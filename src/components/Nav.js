@@ -32,6 +32,13 @@ const Nav = () => {
                         <h3>All Spots</h3>
                         <h3>Categories</h3>
                         <h3>Top Spots</h3>
+                        {
+                            state && state.user
+                            &&
+                            <Link to='/addspot' style={{textDecoration: 'none'}}>
+                                <h3>Add Spot</h3>
+                            </Link>
+                        }
                     </div>
                 </li>
 
