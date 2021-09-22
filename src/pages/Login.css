@@ -1,0 +1,81 @@
+.login-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.login-form h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.login-form .form-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.login-form .form-group label {
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    font-size: 1.5rem;
+}
+
+.login-form .form-group input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    width: 100%;
+    font-family: 'Ubuntu';
+    color: #ddd;
+    font-size: 1rem;
+    text-indent: 3.5rem;
+}
+
+.login-form .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+}
+
+.login-form .buttons-container {
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form .buttons-container .button {
+    margin-bottom: 5px;
+}
+
+.login-form .forgot-password {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.login-form .forgot-password:hover {
+    color: white;
+    text-shadow: 0 0 5px #ddd;
+    transform: scale(1.05);
+}
+
+
+
+@media (max-width: 600px) {
+    .login-form .message {
+        font-size: 1rem;
+    }
+}

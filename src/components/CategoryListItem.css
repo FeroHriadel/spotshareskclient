@@ -1,0 +1,41 @@
+.category-list-item {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Ubuntu';
+    color: #ddd;
+    border-bottom: 1px dotted #ddd;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.category-list-item h3 {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.category-list-item .buttons-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.category-list-item .buttons-box > * {
+    margin: 5px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 600px) {
+    .category-list-item h3 {
+        margin-left: 0;
+    }
+
+    .category-list-item .buttons-box {
+        margin-right: 0;
+    }
+}

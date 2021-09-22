@@ -1,0 +1,112 @@
+.create-category-page h1 {
+    font-family: 'Tulpen One';
+    color: #ddd;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.create-category-page form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-category-page .form-group {
+    width: 100%;
+    max-width: 260px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.create-category-page label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.25rem;
+}
+
+.create-category-page input {
+    width: 100%;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px white solid;
+    background: 0;
+    color: #ddd;
+    text-indent: 2.5rem;
+    font-family: 'Ubuntu';
+    font-size: 1rem;
+}
+
+.create-category-page .message {
+    font-family: 'Tulpen One';
+    color: #9c3611;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.create-category-page form .button {
+    margin-top: 2rem;
+}
+
+
+
+/* .create-category-page h1 {
+    font-family: 'Tulpen One';
+    color: #ddd;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.create-category-page form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-category-page .form-group {
+    width: 90%;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.create-category-page .form-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.25rem;
+}
+
+.create-category-page .form-group input {
+    width: 100%;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px white solid;
+    background: 0;
+    color: #ddd;
+    text-indent: 3rem;
+    font-family: 'Ubuntu';
+    font-size: 1rem;
+}
+
+.create-category-page .message {
+    font-family: 'Tulpen One';
+    color: #9c3611;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.create-category-page form .button {
+    margin-top: 2rem;
+} */

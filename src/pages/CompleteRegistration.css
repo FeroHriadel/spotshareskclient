@@ -1,0 +1,31 @@
+.complete-registration-page-container {
+    width: 100vw;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.complete-registration-page-container .big-card-container {
+    margin-top: 0;
+}
+
+.complete-registration-page-container .big-card-container .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-registration-page-container .big-card-container .content-wrapper p {
+    width: 50%;
+    min-width: 260px;
+    font-family: 'Ubuntu';
+    font-size: 1.25rem;
+    text-align: center;
+    color: #ddd;
+    margin-bottom: 2rem;
+}

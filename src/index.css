@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url(./fonts/Ubuntu-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Teko';
+  src: url(./fonts/Teko-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Tulpen One';
+  src: url(./fonts/TulpenOne-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+

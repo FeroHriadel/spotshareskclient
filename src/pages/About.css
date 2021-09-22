@@ -1,0 +1,54 @@
+.about-page-container .content-wrapper .image-div {
+    -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%);
+    float: left;
+    width: 260px;
+    min-width: 260px;
+    height: 260px;
+    min-height: 260px;
+    background: url(../images/MapIcon.png);
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.about-page-container .content-wrapper p {
+    font-family: 'Ubuntu';
+    color: #ddd;
+    line-height: 1.5;
+    text-align: justify;
+    margin-right: 1rem;
+    padding: 0 0.75rem;
+}
+
+/* .about-page-container .content-wrapper p .brown {
+    color: #9c3611;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+} */
+
+.about-page-container .content-wrapper p .orange {
+    color: #9c3611;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.about-page-container .content-wrapper p .orange:hover {
+    text-shadow: orangered 0 0 5px;
+}
+
+
+
+@media (max-width: 500px) {
+    .about-page-container .content-wrapper .image-div {
+        float: none;
+        margin-bottom: 2rem;
+        margin-right: 0px;
+        display: none;
+    }
+
+    .about-page-container .content-wrapper p  {
+        margin-right: 5px;
+    }
+}

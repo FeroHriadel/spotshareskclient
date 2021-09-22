@@ -1,0 +1,15 @@
+.admin-page-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-page-content h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+}
+
+.admin-page-content > .button {
+    margin-bottom: 1rem;
+}

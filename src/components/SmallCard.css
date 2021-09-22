@@ -1,0 +1,24 @@
+.small-card-container {
+    margin-top: 3rem; /*compensate for Nav*/
+    height: 75%;
+    max-height: 750px;
+    width: 50%;
+    max-width: 500px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #a57b3b38, #ccccca21);
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Tulpen One';
+    color: #ddd;
+}
+
+@media(max-width: 500px) {
+    .small-card-container {
+        width: 90%;
+    }
+}
