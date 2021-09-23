@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useContext, useRef } from 'react';
+import React, { useState, useMemo, useContext, useRef, useEffect } from 'react';
+import { AuthContext } from '../context/authContext';
 import { useHistory } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -36,7 +37,7 @@ const Profile = () => {
 
     const [userUpdate] = useMutation(USER_UPDATE, {
         update: ({ data }) => {
-            console.log('updated', data);
+            console.log('Profile updated:', data);
             setMessage('Your profile has been changed');
         },
         onError: () => {

@@ -1,0 +1,20 @@
+.tag-select-container .tags-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tag-select-container .tags-box .tag-wrapper {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tag-select-container .tags-box .tag-wrapper .tag-name {
+    color: white;
+    font-family: 'Ubuntu';
+    font-size: 0.75rem;
+    margin-top: 5px;
+}
