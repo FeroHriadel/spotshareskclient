@@ -1,0 +1,79 @@
+.add-spot-form {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.add-spot-form .form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.add-spot-form label {
+    font-family: 'Tulpen One';
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.add-spot-form input {
+    border: 0;
+    border-bottom: 1px white solid;
+    outline: 0;
+    background: 0;
+    width: 97.5%;
+    font-family: 'Ubuntu';
+    color: white;
+}
+
+.add-spot-form input:focus {
+    border-bottom: 2px white solid;
+}
+
+.add-spot-form textarea {
+    width: 97.5%;
+    min-width: 97.5%;
+    max-width: 97.5%;
+    height: 5rem;
+    min-height: 5rem;
+    max-height: 5rem;
+    font-family: 'Ubuntu';
+    color: white;
+    background: 0;
+    outline: 0;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.add-spot-form textarea:focus {
+    border: 2px white solid;
+}
+
+.add-spot-form select {
+    width: 97.5%;
+    background: 0;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px white solid;
+    font-family: 'Ubuntu';
+    color: white;
+}
+
+.add-spot-form select option {
+    color: black;
+}
+
+::placeholder {
+    color: #ddd;
+}
+
+.add-spot-form .button-wrapper {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

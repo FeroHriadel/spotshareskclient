@@ -4,6 +4,8 @@ import BigCard from '../components/BigCard';
 import FileUploadMultiple from '../components/FileUploadMultiple';
 import CategorySelect from '../components/CategorySelect';
 import TagSelect from '../components/TagSelect';
+import Button from '../components/Button';
+import './AddSpot.css';
 
 
 
@@ -18,8 +20,8 @@ const AddSpot = () => {
         description: '',
         category: '',
         tags: [],
-        long: '',
         lat: '',
+        long: '',
         likes: []
     });
 
@@ -40,6 +42,14 @@ const AddSpot = () => {
 
 
 
+    //SUBMIT HANDLER
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(values);
+    }
+
+
+
     //RENDER
     return (
         <Layout>
@@ -47,7 +57,7 @@ const AddSpot = () => {
                 <FileUploadMultiple values={values} setValues={setValues} setMessage={setMessage} />
                 { message && <p className='message'>{message}</p>}
 
-                <form>
+                <form className='add-spot-form'>
                     <div className='form-group'>
                         <label>Name:</label>
                         <input
@@ -95,6 +105,32 @@ const AddSpot = () => {
                     <CategorySelect handleChange={handleChange} />
 
                     <TagSelect values={values} setValues={setValues} />
+
+                    <div className='form-group'>
+                        <label>Latitude:</label>
+                        <input
+                            type='number'
+                            name='lat'
+                            value={lat}
+                            placeholder='e.g.: 48.88318'
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className='form-group'>
+                        <label>Longitude:</label>
+                        <input
+                            type='number'
+                            name='long'
+                            value={long}
+                            placeholder='e.g.: 20.13913'
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className='button-wrapper'>
+                        <Button action={handleSubmit} buttonText='Add Spot' />
+                    </div>
                     
                 </form>
             </BigCard>

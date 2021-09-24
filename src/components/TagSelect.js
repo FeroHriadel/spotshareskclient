@@ -49,7 +49,7 @@ const TagSelect = ({ values, setValues }) => {
 
             {
                 selectedTags.map(st => (
-                    <span key={st._id}>
+                    <span className='selected-tag' key={st._id}>
                         {st.name}
                     </span>
                 ))

@@ -34,7 +34,15 @@ const CategorySelect = ({ handleChange }) => {
                 <option value=''>Choose a category</option>
                 {
                     data.allCategories.map(c => (
-                        <option key={c._id} value={c._id}>{c.name}</option>
+                        <option 
+                            key={c._id} 
+                            value={c._id}
+                            style={{
+                                background: '0'
+                            }}
+                        >
+                            {c.name}
+                        </option>
                     ))
                 }
             </select>
