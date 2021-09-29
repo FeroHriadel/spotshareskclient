@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../context/authContext';
+import { useMutation } from '@apollo/react-hooks';
+import { SPOT_CREATE } from '../graphql/mutations';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import FileUploadMultiple from '../components/FileUploadMultiple';
@@ -10,6 +13,12 @@ import './AddSpot.css';
 
 
 const AddSpot = () => {
+    //GET USER FROM CTX
+    const { state } = useContext(AuthContext);
+
+
+
+
     //VALUES
     const [message, setMessage] = useState('');
     const [values, setValues] = useState({
@@ -22,15 +31,18 @@ const AddSpot = () => {
         tags: [],
         lat: '',
         long: '',
-        likes: []
+        postedBy: state.user.email
     });
 
     const { name, where, highlight, description, category, tags, long, lat } = values;
 
 
-    useEffect(() => {
-        console.table(values);
-    }, [values])
+
+    //MUTATION
+    const [spotCreate] = useMutation(SPOT_CREATE, {
+        onCompleted: () => console.log('ok'),
+        onError: (error) => console.log('Error: ', error)
+    })
 
 
 
@@ -46,6 +58,11 @@ const AddSpot = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(values);
+
+        const tagIDs = tags.map(t => t._id) //remove unnecessary data from tags
+        spotCreate({
+            variables: {input: {...values, tags: tagIDs}}
+        })
     }
 
 

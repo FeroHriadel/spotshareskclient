@@ -106,3 +106,26 @@ export const TAG_UPDATE = gql`
         }
     }
 `;
+
+
+
+//SPOT MUTATIONS
+export const SPOT_CREATE = gql`
+    mutation spotCreate($input: SpotCreateInput!) {
+        spotCreate(input: $input) {
+            name
+            slug
+            where
+            highlight
+            description
+            category
+            tags
+            lat
+            long
+            likes
+            postedBy
+            _id
+            createdAt
+        }
+    }
+`;
