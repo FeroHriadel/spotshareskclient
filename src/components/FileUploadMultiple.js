@@ -71,6 +71,7 @@ const FileUploadMultiple = ({ values, setValues, setMessage }) => {
                 {
                     values.images.map(image => (
                         <div
+                            key={image.public_id}
                             style={{
                                 width: '50px',
                                 minWidth: '50px',

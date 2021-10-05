@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useMutation } from '@apollo/react-hooks';
 import { SPOT_CREATE } from '../graphql/mutations';
+import { useHistory } from 'react-router-dom';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import FileUploadMultiple from '../components/FileUploadMultiple';
@@ -13,6 +14,11 @@ import './AddSpot.css';
 
 
 const AddSpot = () => {
+    //ROUTER
+    const history = useHistory();
+
+
+
     //GET USER FROM CTX
     const { state } = useContext(AuthContext);
 
@@ -20,6 +26,7 @@ const AddSpot = () => {
 
 
     //VALUES
+    const [submitShown, setSubmitShown] = useState(true);
     const [message, setMessage] = useState('');
     const [values, setValues] = useState({
         images: [],
@@ -31,18 +38,32 @@ const AddSpot = () => {
         tags: [],
         lat: '',
         long: '',
-        postedBy: state.user.email
+        postedBy: '' //see useEffect below
     });
 
     const { name, where, highlight, description, category, tags, long, lat } = values;
+
+    useEffect(() => {
+        if (state && state.user && state.user.email) setValues({...values, postedBy: state.user.email});
+        else setValues({...values, postedBy: ''});
+    }, [state.user]) //had to do this to fill in postedBy => page crashed on logout
 
 
 
     //MUTATION
     const [spotCreate] = useMutation(SPOT_CREATE, {
-        onCompleted: () => console.log('ok'),
-        onError: (error) => console.log('Error: ', error)
-    })
+        onCompleted: () => {
+            setSubmitShown(false);
+            setMessage('Spot Created. Redirecting...');
+            setTimeout(() => {
+                history.push('PUSH TO THE CREATED SPOT PATH') // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }, 2000);
+        },
+        onError: (error) => {
+            setMessage(`Error. ${error}`);
+            console.log(error);
+        }
+    });
 
 
 
@@ -72,7 +93,7 @@ const AddSpot = () => {
         <Layout>
             <BigCard heading='ADD SPOT'>
                 <FileUploadMultiple values={values} setValues={setValues} setMessage={setMessage} />
-                { message && <p className='message'>{message}</p>}
+                { message && <p className='add-spot message'>{message}</p>}
 
                 <form className='add-spot-form'>
                     <div className='form-group'>
@@ -145,9 +166,15 @@ const AddSpot = () => {
                         />
                     </div>
 
-                    <div className='button-wrapper'>
-                        <Button action={handleSubmit} buttonText='Add Spot' />
-                    </div>
+                    { message && <p className='message'>{message}</p>}
+
+                    {
+                        submitShown
+                        &&
+                        <div className='button-wrapper'>
+                            <Button action={handleSubmit} buttonText='Add Spot' />
+                        </div>
+                    }
                     
                 </form>
             </BigCard>

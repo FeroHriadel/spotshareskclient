@@ -13,15 +13,39 @@ const CategorySelect = ({ handleChange }) => {
 
     //RENDER
     if (loading) return (
-        <p>Loading categories...</p>
+        <p style={{
+            color: '#9c3611',
+            fontSize: '2rem',
+            fontWeight: 'bold',
+            margin: '1rem 0 1rem 0',
+            fontFamily: 'Tulpen One',
+        }}>
+            Loading categories...
+        </p>
     )
 
     if (error) return (
-        <p>Error. Categories could not be fetched.</p>
+        <p style={{
+            color: '#9c3611',
+            fontSize: '2rem',
+            fontWeight: 'bold',
+            margin: '1rem 0 1rem 0',
+            fontFamily: 'Tulpen One',
+        }}>
+            Error. Categories could not be fetched.
+        </p>
     )
 
     if (data.allCategories.length < 1) return (
-        <p>There are no categories to choose from</p>
+        <p style={{
+            color: '#9c3611',
+            fontSize: '2rem',
+            fontWeight: 'bold',
+            margin: '1rem 0 1rem 0',
+            fontFamily: 'Tulpen One',
+        }}>
+            There are no categories to choose from
+        </p>
     )
 
     return (
