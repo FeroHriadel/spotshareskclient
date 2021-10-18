@@ -54,3 +54,38 @@ export const GET_TAG = gql`
     }
     ${TAG_INFO}
 `;
+
+
+
+//SPOT QUERIES
+export const GET_SPOT = gql`
+    query getSpot($slug: String!) {
+        getSpot(slug: $slug) {
+            name
+            slug
+            images {
+                url
+                public_id
+            }
+            where
+            highlight
+            description
+            category {
+                name
+            }
+            tags {
+                image {
+                    url
+                }
+                name
+            }
+            lat
+            long
+            postedBy
+            username
+            createdAt
+            updatedAt
+            likes
+        }
+    }
+`;

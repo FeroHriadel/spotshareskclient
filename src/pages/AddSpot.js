@@ -52,11 +52,11 @@ const AddSpot = () => {
 
     //MUTATION
     const [spotCreate] = useMutation(SPOT_CREATE, {
-        onCompleted: () => {
+        onCompleted: (data) => {
             setSubmitShown(false);
             setMessage('Spot Created. Redirecting...');
             setTimeout(() => {
-                history.push('PUSH TO THE CREATED SPOT PATH') // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                history.push(`/spot/${data.spotCreate.slug}`)
             }, 2000);
         },
         onError: (error) => {

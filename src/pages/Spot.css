@@ -1,0 +1,56 @@
+.spot-page-message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.spot-page-highlight {
+    text-align: center;
+    font-family: 'Tulpen One';
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+    text-transform: uppercase;
+}
+
+.spot-page-tags-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.spot-page-tags-box > div {
+    margin: 5px;
+}
+
+.spot-page-content {
+    width: 100%;
+    height: 100%;
+}
+
+.spot-page-content .image-div {
+    -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%);
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.spot-page-content .orange {
+    color: #9c3611;
+    transition: 0.3s linear;
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.spot-page-content .details {
+    color: white;
+    font-weight: normal;
+    margin-left: 1rem;
+}

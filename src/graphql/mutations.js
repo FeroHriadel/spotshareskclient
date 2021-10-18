@@ -122,7 +122,6 @@ export const SPOT_CREATE = gql`
             tags
             lat
             long
-            likes
             postedBy
             _id
             createdAt
