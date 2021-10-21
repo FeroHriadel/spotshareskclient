@@ -5,7 +5,7 @@ import { ALL_CATEGORIES } from '../graphql/queries';
 
 
 
-const CategorySelect = ({ handleChange }) => {
+const CategorySelect = ({ handleChange, selectedCategory }) => {
     //QUERY
     const { loading, error, data } = useQuery(ALL_CATEGORIES);
 
@@ -54,6 +54,7 @@ const CategorySelect = ({ handleChange }) => {
             <select
                 name='category'
                 onChange={handleChange}
+                value={selectedCategory}
             >
                 <option value=''>Choose a category</option>
                 {

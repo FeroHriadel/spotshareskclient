@@ -128,3 +128,22 @@ export const SPOT_CREATE = gql`
         }
     }
 `;
+
+export const SPOT_EDIT = gql`
+  mutation spotEdit($input: spotEditInput!) {
+      spotEdit(input: $input) {
+          name
+          slug
+          where
+          highlight
+          description
+          category
+          tags
+          lat
+          long
+          postedBy
+          _id
+          createdAt
+      }
+  }  
+`;

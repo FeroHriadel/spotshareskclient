@@ -1,0 +1,30 @@
+.all-spots-page .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.all-spots-page .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-spots-page .pagination > * {
+    margin: 0.25rem;
+    font-family: 'Ubuntu';
+    color: #ddd;
+    font-size: 0.75rem;
+}
+
+.all-spots-page .pagination .arrow {
+    cursor: pointer;
+    transition: 0.4s linear;
+}
+
+.all-spots-page .pagination .arrow:hover {
+    text-shadow: 0 0 7px white;
+}

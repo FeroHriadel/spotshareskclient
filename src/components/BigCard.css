@@ -28,6 +28,7 @@
     max-height: calc(100% - 2rem);
     overflow-y: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .big-card-container .content-wrapper::-webkit-scrollbar-track  {

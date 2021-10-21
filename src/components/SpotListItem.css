@@ -1,0 +1,114 @@
+.spot-list-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+}
+
+.spot-list-item .image {
+    width: 260px;
+    min-width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.spot-list-item .content {
+    margin-left: 2rem;
+}
+
+.spot-list-item .content h2 {
+    color: #eee;
+    font-family: 'Tulpen One';
+    text-transform: uppercase;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.spot-list-item .content .tags-container {
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.spot-list-item .content .highlight {
+    color: #eee;
+    font-size: 1.25rem;
+    font-family: 'Ubuntu';
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.spot-list-item .content .category {
+    color: #eee;
+    font-family: 'Ubuntu';
+    cursor: pointer;
+}
+
+.spot-list-item .content .admin-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.spot-list-item .content .admin-buttons .btn {
+    width: 100px;
+    min-width: 100px;
+    height: 1.5rem;
+    background-color: #333;
+    color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Ubuntu';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5px;
+    transition: 0.4s linear;
+    cursor: pointer;
+}
+
+.spot-list-item .content .admin-buttons .btn:hover {
+    transform: scale(1.05);
+}
+
+.spot-list-item .content .admin-buttons .btn:active {
+    transform: scale(0.9);
+}
+
+
+
+@media (max-width: 550px) {
+    .spot-list-item {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .spot-list-item .image {
+        width: 240px;
+        min-width: 200px;
+        height: 240px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+
+    .spot-list-item .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 0rem;
+    }
+
+    .spot-list-item .content > * {
+        text-align: center;
+    }
+
+    .spot-list-item .content .admin-buttons {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}

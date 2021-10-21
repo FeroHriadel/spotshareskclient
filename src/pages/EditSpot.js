@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
-import { useMutation } from '@apollo/react-hooks';
-import { SPOT_CREATE } from '../graphql/mutations';
-import { ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
-import { useQuery } from '@apollo/react-hooks';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/react-hooks';
+import { GET_SPOT, ALL_SPOTS } from '../graphql/queries';
+import { SPOT_EDIT } from '../graphql/mutations';
+import omitDeep from 'omit-deep';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import FileUploadMultiple from '../components/FileUploadMultiple';
@@ -15,15 +15,30 @@ import './AddSpot.css';
 
 
 
-const AddSpot = () => {
-    //ROUTER
-    const history = useHistory();
+const EditSpot = () => {
+    //GET SPOT
+    const params = useParams();
+    
+    const [getSpot, { error, loading, data }] = useLazyQuery(GET_SPOT);
+
+    useEffect(() => {
+        const slug = params.spotslug;
+        getSpot({variables: {slug}});
+    }, [params]);
 
 
 
-    //GET USER FROM CTX
+    //ONLY ADMIT ADMIN OR AUTHOR
     const { state } = useContext(AuthContext);
-
+    const history = useHistory();
+    
+    useEffect(() => {
+        if (data && state && data.getSpot.postedBy !== state.user.email) {
+            if (state.user.role !== 'admin') {
+                history.push('/');
+            }
+        }
+    }, [data, state]);
 
 
 
@@ -40,35 +55,31 @@ const AddSpot = () => {
         tags: [],
         lat: '',
         long: '',
-        postedBy: '' //see useEffect below
+        postedBy: ''
     });
 
     const { name, where, highlight, description, category, tags, long, lat } = values;
 
+
+    //PRE-FILL FORM
     useEffect(() => {
-        if (state && state.user && state.user.email) setValues({...values, postedBy: state.user.email});
-        else setValues({...values, postedBy: ''});
-    }, [state.user]) //had to do this to fill in postedBy => page crashed on logout
-
-
-
-    //QUERIES & MUTATION
-    const { data } = useQuery(ALL_SPOTS, {variables: {input: 1}});
-    const { data: page} = useQuery(TOTAL_SPOTS);
-
-    const [spotCreate] = useMutation(SPOT_CREATE, {
-        onCompleted: (data) => {
-            setSubmitShown(false);
-            setMessage('Spot Created. Redirecting...');
-            setTimeout(() => {
-                history.push(`/spot/${data.spotCreate.slug}`)
-            }, 2000);
-        },
-        onError: (error) => {
-            setMessage(`Error. ${error}`);
-            console.log(error);
+        if (data && data.getSpot) {
+            setValues({
+                images: omitDeep(data.getSpot.images, ["__typename"]),
+                name: data.getSpot.name,
+                where: data.getSpot.where,
+                highlight: data.getSpot.highlight,
+                description: data.getSpot.description,
+                category: data.getSpot.category._id,
+                tags: data.getSpot.tags,
+                lat: data.getSpot.lat,
+                long: data.getSpot.long,
+                postedBy: data.getSpot.postedBy,
+                slug: data.getSpot.slug,
+                postedBy: data.getSpot.postedBy
+            })
         }
-    });
+    }, [data]);
 
 
 
@@ -80,6 +91,23 @@ const AddSpot = () => {
 
 
 
+    //MUTATION & QUERY
+    const { data: allSpotsData } = useQuery(ALL_SPOTS, {variables: {input: 1}});
+    const [spotEdit] = useMutation(SPOT_EDIT, {
+        onCompleted: (data) => {
+            setMessage('Spot Updated');
+            setTimeout(() => {
+                setMessage('');
+            }, 2000);
+        },
+        onError: (error) => {
+            setMessage(`Error: ${error}`);
+            console.log(error);
+        }
+    });
+
+
+
     //SUBMIT HANDLER
     const handleSubmit = e => {
         e.preventDefault();
@@ -87,18 +115,43 @@ const AddSpot = () => {
         if (Number(long) < 16.60943 || Number(long) > 22.76178) return setMessage('Longitude is outside Slovakia (16.60943 - 22.76178)');
 
         const tagIDs = tags.map(t => t._id) //remove unnecessary data from tags
-        spotCreate({
+        console.log({...values, tags: tagIDs}) ////////////////////////////////////////////////
+        spotEdit({
             variables: {input: {...values, tags: tagIDs}},
-            refetchQueries: [{query: ALL_SPOTS, variables: {input: 1}}, {query: TOTAL_SPOTS}]
+            refetchQueries: [{query: ALL_SPOTS, variables: {input: 1}}] //shold I also refetch GET_SPOT???
         })
     }
 
 
 
     //RENDER
-    return (
+    if (error) return (
         <Layout>
-            <BigCard heading='ADD SPOT'>
+            <BigCard heading='EDIT SPOT'>
+                <p className='add-spot message'>Error. Spot update failed.</p>
+            </BigCard>
+        </Layout>
+    )
+
+    if (loading) return (
+        <Layout>
+            <BigCard heading='EDIT SPOT'>
+                <p className='add-spot message'>Loading...</p>
+            </BigCard>
+        </Layout>
+    )
+
+    if (!values.name) return (
+        <Layout>
+            <BigCard heading='EDIT SPOT'>
+                <p className='add-spot message'>Loading...</p>
+            </BigCard>
+        </Layout>
+    )
+
+    if (values.name) return (
+        <Layout>
+            <BigCard heading='EDIT SPOT'>
                 <FileUploadMultiple values={values} setValues={setValues} setMessage={setMessage} />
                 { message && <p className='add-spot message'>{message}</p>}
 
@@ -179,7 +232,7 @@ const AddSpot = () => {
                         submitShown
                         &&
                         <div className='button-wrapper'>
-                            <Button action={handleSubmit} buttonText='Add Spot' />
+                            <Button action={handleSubmit} buttonText='Edit Spot' />
                         </div>
                     }
                     
@@ -189,4 +242,4 @@ const AddSpot = () => {
     )
 }
 
-export default AddSpot
+export default EditSpot

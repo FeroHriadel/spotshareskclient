@@ -29,7 +29,9 @@ const Nav = () => {
                 <li>
                     <h3 className='main-item'>Spots</h3>
                     <div className='sub-items'>
-                        <h3>All Spots</h3>
+                        <Link to='/allspots' style={{textDecoration: 'none'}}>
+                            <h3>All Spots</h3>
+                        </Link>    
                         <h3>Categories</h3>
                         <h3>Top Spots</h3>
                         {

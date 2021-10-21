@@ -22,6 +22,8 @@ import ManageTags from './pages/ManageTags';
 import EditTag from './pages/EditTag';
 import AddSpot from './pages/AddSpot';
 import Spot from './pages/Spot';
+import AllSpots from './pages/AllSpots';
+import EditSpot from './pages/EditSpot';
 import NotFound from './pages/NotFound';
 
 
@@ -64,6 +66,8 @@ const App = () => {
           <AdminRoute exact path='/edittag/:tagslug' component={EditTag} />
           <PrivateRoute exact path='/addspot' component={AddSpot} />
           <Route exact path='/spot/:spotslug' component={Spot} />
+          <Route exact path='/allspots' component={AllSpots} />
+          <PrivateRoute exact path='/editspot/:spotslug' component={EditSpot} />
           <Route component={NotFound} />
         </Switch>
       </ApolloProvider>

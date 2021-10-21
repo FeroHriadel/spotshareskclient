@@ -72,6 +72,47 @@ export const GET_SPOT = gql`
             description
             category {
                 name
+                _id
+            }
+            tags {
+                image {
+                    url
+                    public_id
+                }
+                name
+                _id
+            }
+            lat
+            long
+            postedBy
+            username
+            createdAt
+            updatedAt
+            likes
+        }
+    }
+`;
+
+export const TOTAL_SPOTS = gql`
+    query {
+        totalSpots
+    }
+`;
+
+export const ALL_SPOTS = gql`
+    query allSpots($input: Int!) {
+        allSpots(input: $input) {
+            name
+            slug
+            images {
+                url
+                public_id
+            }
+            where
+            highlight
+            description
+            category {
+                name
             }
             tags {
                 image {

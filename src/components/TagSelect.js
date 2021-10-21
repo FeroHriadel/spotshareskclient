@@ -7,7 +7,7 @@ import './TagSelect.css';
 
 const TagSelect = ({ values, setValues }) => {
     //SELECTED TAGS
-    const [selectedTags, setSelectedTags] = useState([]);
+    const [selectedTags, setSelectedTags] = useState(values.tags);
 
     const selectTag = (tag) => {
         let tagsArray = selectedTags;
