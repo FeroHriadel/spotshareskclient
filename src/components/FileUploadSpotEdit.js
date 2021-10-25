@@ -6,13 +6,14 @@ import Resizer from 'react-image-file-resizer';
 import axios from 'axios';
 
 //
-// import { useMutation } from '@apollo/react-hooks';
-// import { SPOT_EDIT } from '../graphql/mutations';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+import { GET_SPOT, ALL_SPOTS } from '../graphql/queries';
+import { SPOT_EDIT } from '../graphql/mutations';
 
 
 
 
-const FileUploadMultiple = ({ values, setValues, setMessage }) => {
+const FileUploadSpotEdit = ({ values, setValues, setMessage }) => {
     const { state } = useContext(AuthContext);
 
 
@@ -43,15 +44,65 @@ const FileUploadMultiple = ({ values, setValues, setMessage }) => {
     }
 
 
+    //MUTATION & QUERY
+    const [deletedImgPublicId, setDeletedImgPublicId] = useState(null);
+    const { data: allSpotsData } = useQuery(ALL_SPOTS, {variables: {input: 1}});
+    const [spotEdit] = useMutation(SPOT_EDIT, {
+        onCompleted: (data) => {
+            deleteCloudinaryImage(deletedImgPublicId);
+            setMessage('Spot images updated');
+            setTimeout(() => {
+                setMessage('');
+            }, 2000);
+            setDeletedImgPublicId(null);
+        },
+        onError: (error) => {
+            setMessage(`Image delete failed`);
+            console.log(error);
+            setTimeout(() => {
+                setMessage('');
+            }, 2000);
+            setDeletedImgPublicId(null);
+        }
+    });
+
+
 
     //DELETE UPLOADED IMAGE
-    const removeImage = (imagePublicId) => {       
-            axios.post(`${process.env.REACT_APP_REST_ENDPOINT}/removeimage`, {public_id: imagePublicId}, {headers: {authtoken: state.user.token}})
-            .then(res => {
-                let uploadedImages = values.images;
-                let filteredImages = uploadedImages.filter(i => i.public_id !== imagePublicId);
-                setValues({...values, images: filteredImages});
-            })
+    const deleteImgFromDb = (imagePublicId) => {
+        //check if not the only image
+        if (values.images.length === 1) {
+            setMessage('Cannot delete the spot only image');
+            setTimeout(() => {
+                setMessage('');
+            }, 2000);
+            return
+        }
+
+        setDeletedImgPublicId(imagePublicId);
+        setMessage('Deleting image...');
+
+        //update values
+        let uploadedImages = values.images;
+        let filteredImages = uploadedImages.filter(i => i.public_id !== imagePublicId);
+        setValues({...values, images: filteredImages});
+
+        //rewrite spot in db
+        if (Number(values.lat) > 49.3574 || Number(values.lat) < 47.64725) return setMessage('Latitude is outside Slovakia (47.64725 - 49.3574)');
+        if (Number(values.long) < 16.60943 || Number(values.long) > 22.76178) return setMessage('Longitude is outside Slovakia (16.60943 - 22.76178)');
+        const tagIDs = values.tags.map(t => t._id) //remove unnecessary data from tags
+        spotEdit({
+            variables: {input: {...values, tags: tagIDs, images: filteredImages}},
+            refetchQueries: [{query: ALL_SPOTS, variables: {input: 1}}]
+        })
+    }
+
+    const deleteCloudinaryImage = (imagePublicId) => {
+        axios.post(`${process.env.REACT_APP_REST_ENDPOINT}/removeimage`, {public_id: imagePublicId}, {headers: {authtoken: state.user.token}})
+    }
+
+    const removeImage = (imagePublicId) => { // a little stupid I know - come back and rewrite this later       
+           deleteImgFromDb(imagePublicId);
     }
 
 
@@ -103,4 +154,4 @@ const FileUploadMultiple = ({ values, setValues, setMessage }) => {
     )
 }
 
-export default FileUploadMultiple
+export default FileUploadSpotEdit

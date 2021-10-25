@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useHistory } from 'react-router-dom';
 import TagImage from './TagImage';
@@ -6,7 +6,7 @@ import './SpotListItem.css';
 
 
 
-const SpotListItem = ({ spot }) => {
+const SpotListItem = ({ spot, setModalShown, setSpotToDelete }) => {
     //DEFS
     const history = useHistory();
     const { state } = useContext(AuthContext);
@@ -47,7 +47,15 @@ const SpotListItem = ({ spot }) => {
                     state && state.user && (state.user.role === 'admin' || state.user.email === spot.postedBy) &&
                     <div className='admin-buttons'>
                         <div className='btn' onClick={() => history.push(`/editspot/${spot.slug}`)}><p>Edit</p></div>
-                        <div className='btn' onClick={() => console.log('delete spot')}><p>Delete</p></div>
+                        <div
+                            className='btn' 
+                            onClick={() => {
+                                setModalShown(true);
+                                setSpotToDelete(spot);
+                            }}
+                        >
+                            <p>Delete</p>
+                        </div>
                     </div>
                 }
             </div>

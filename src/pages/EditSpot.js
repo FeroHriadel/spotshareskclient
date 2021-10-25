@@ -7,7 +7,8 @@ import { SPOT_EDIT } from '../graphql/mutations';
 import omitDeep from 'omit-deep';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
-import FileUploadMultiple from '../components/FileUploadMultiple';
+//import FileUploadMultiple from '../components/FileUploadMultiple';
+import FileUploadSpotEdit from '../components/FileUploadSpotEdit';
 import CategorySelect from '../components/CategorySelect';
 import TagSelect from '../components/TagSelect';
 import Button from '../components/Button';
@@ -55,7 +56,8 @@ const EditSpot = () => {
         tags: [],
         lat: '',
         long: '',
-        postedBy: ''
+        postedBy: '',
+        likes: []
     });
 
     const { name, where, highlight, description, category, tags, long, lat } = values;
@@ -76,10 +78,17 @@ const EditSpot = () => {
                 long: data.getSpot.long,
                 postedBy: data.getSpot.postedBy,
                 slug: data.getSpot.slug,
-                postedBy: data.getSpot.postedBy
+                postedBy: data.getSpot.postedBy,
+                likes: data.getSpot.likes
             })
         }
     }, [data]);
+
+
+
+    useEffect(() => {
+        if (values.likes) console.log(values.likes)
+    }, [values])
 
 
 
@@ -115,10 +124,9 @@ const EditSpot = () => {
         if (Number(long) < 16.60943 || Number(long) > 22.76178) return setMessage('Longitude is outside Slovakia (16.60943 - 22.76178)');
 
         const tagIDs = tags.map(t => t._id) //remove unnecessary data from tags
-        console.log({...values, tags: tagIDs}) ////////////////////////////////////////////////
         spotEdit({
             variables: {input: {...values, tags: tagIDs}},
-            refetchQueries: [{query: ALL_SPOTS, variables: {input: 1}}] //shold I also refetch GET_SPOT???
+            refetchQueries: [{query: ALL_SPOTS, variables: {input: 1}}]
         })
     }
 
@@ -152,7 +160,18 @@ const EditSpot = () => {
     if (values.name) return (
         <Layout>
             <BigCard heading='EDIT SPOT'>
-                <FileUploadMultiple values={values} setValues={setValues} setMessage={setMessage} />
+                {/*<FileUploadMultiple 
+                    values={values} 
+                    setValues={setValues} 
+                    setMessage={setMessage}
+                />*/}
+
+                <FileUploadSpotEdit 
+                    values={values} 
+                    setValues={setValues} 
+                    setMessage={setMessage}
+                />
+                
                 { message && <p className='add-spot message'>{message}</p>}
 
                 <form className='add-spot-form'>

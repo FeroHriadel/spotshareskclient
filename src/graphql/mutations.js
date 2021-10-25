@@ -147,3 +147,51 @@ export const SPOT_EDIT = gql`
       }
   }  
 `;
+
+export const SPOT_DELETE = gql`
+  mutation spotDelete($input: spotDeleteInput!) {
+      spotDelete(input: $input) {
+        _id
+        slug
+        name
+        postedBy
+    }
+  }
+`;
+
+
+
+export const SPOT_LIKE = gql`
+  mutation spotLike($input: SpotLikeInput!) {
+      spotLike(input: $input) {
+        name
+        slug
+        images {
+            url
+            public_id
+        }
+        where
+        highlight
+        description
+        category {
+            name
+            _id
+        }
+        tags {
+            image {
+                url
+                public_id
+            }
+            name
+            _id
+        }
+        lat
+        long
+        postedBy
+        username
+        createdAt
+        updatedAt
+        likes
+    }
+  }
+`;

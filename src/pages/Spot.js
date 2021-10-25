@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useLazyQuery, useMutation } from '@apollo/react-hooks';
 import { GET_SPOT } from '../graphql/queries';
+import { SPOT_LIKE } from '../graphql/mutations';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import TagImage from '../components/TagImage';
 import MapModal from '../components/MapModal';
 import SpotGallery from '../components/SpotGallery';
+import { FaThumbsUp } from 'react-icons/fa';
 import './Spot.css';
 
 
@@ -27,7 +29,21 @@ const Spot = () => {
     useEffect(() => {
         const slug = params.spotslug;
         getSpot({variables: {slug}});
-    }, [params])
+    }, [params]);
+
+
+
+    //LIKE SPOT
+    const [likeMessage, setLikeMessage] = useState('');
+    const [spotLike] = useMutation(SPOT_LIKE, {
+        onError: (error) => {
+            console.log(error);
+            setLikeMessage(error && error.message ? error.message : 'Spot like failed, sorry');
+            setTimeout(() => {
+                setLikeMessage('')
+            }, 2000);
+        }
+    });
 
 
 
@@ -119,7 +135,33 @@ const Spot = () => {
 
                         <p className='orange'>Highlight: <span className='details'>{data.getSpot.highlight ? data.getSpot.highlight : 'The author did not provide any highlight'}</span> </p>
 
-                        <p className='orange'>Liked by: <span className='details'>{data.getSpot.likes.length === 0 ? 'This spot has not been liked yet' : (data.getSpot.likes.length + ' people')}</span> </p>
+                        <p className='orange'>
+                            Liked by: 
+                            <span className='details'>
+                                {data.getSpot.likes.length === 0 
+                                    ? 
+                                    'This spot has not been liked yet' 
+                                    : 
+                                    data.getSpot.likes.length === 1
+                                    ?
+                                    (data.getSpot.likes.length + ' person')
+                                    :
+                                    (data.getSpot.likes.length + ' people')}
+                            </span>
+                            <span 
+                                title='Like this spot' 
+                                className='details thumbs-up'
+                                onClick={() => {
+                                    spotLike({
+                                        variables: {input: {slug: params.spotslug}}, 
+                                        refetchQueries: [{query: GET_SPOT, variables: {slug: data.getSpot.slug}}]
+                                    });
+                                }}
+                            >
+                                <FaThumbsUp /> 
+                                {likeMessage && <span className='details thumbs-up'>{likeMessage}</span>}
+                            </span>
+                        </p>
 
                         <p className='orange'>First Posted: <span className='details'>{new Date(data.getSpot.createdAt).toLocaleDateString('en-US')}</span></p>
 
