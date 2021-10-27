@@ -40,7 +40,7 @@ const AddSpot = () => {
         tags: [],
         lat: '',
         long: '',
-        postedBy: '' //see useEffect below
+        postedBy: '', //see useEffect below
     });
 
     const { name, where, highlight, description, category, tags, long, lat } = values;

@@ -24,6 +24,7 @@ import AddSpot from './pages/AddSpot';
 import Spot from './pages/Spot';
 import AllSpots from './pages/AllSpots';
 import EditSpot from './pages/EditSpot';
+import SearchSpots from './pages/SearchSpots';
 import NotFound from './pages/NotFound';
 
 
@@ -68,6 +69,7 @@ const App = () => {
           <Route exact path='/spot/:spotslug' component={Spot} />
           <Route exact path='/allspots' component={AllSpots} />
           <PrivateRoute exact path='/editspot/:spotslug' component={EditSpot} />
+          <Route exact path='/searchspots' component={SearchSpots} />
           <Route component={NotFound} />
         </Switch>
       </ApolloProvider>

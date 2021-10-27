@@ -19,7 +19,7 @@ const TagSelect = ({ values, setValues }) => {
             tagsArray.splice(selectedTagIndex, 1);
         }
         
-        setSelectedTags([...tagsArray]); //if you setSelectedTags(tagsArray) the seletecedTags.map(st...) won't render. React...
+        setSelectedTags([...tagsArray]);
         setValues({...values, tags: [...tagsArray]});
     }
 
@@ -86,12 +86,14 @@ const TagSelect = ({ values, setValues }) => {
                             <div 
                                 className='tag-img'
                                 style={{
+                                    border: t.image.url ? '' : '2px #ddd solid',
                                     background: `url(${t.image.url}) no-repeat center center/cover`,
                                     width: '50px',
                                     minWidth: '50px',
                                     height: '50px',
                                     minHeight: '50px',
                                     borderRadius: '50%',
+                                    cursor: 'pointer'
                                 }}
                                 onClick={() => selectTag(t)}
                             />

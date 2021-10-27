@@ -26,7 +26,7 @@ const SpotListItem = ({ spot, setModalShown, setSpotToDelete }) => {
         <section className='spot-list-item'>
             <div 
                 className='image' 
-                style={{background: `url(${spot.images[0].url}) no-repeat center center/cover`}}
+                style={spot && spot.images && spot.images[0].url ? { background: `url(${spot.images[0].url}) no-repeat center center/cover`} : {background: 'rgba(0, 0, 0, 0.3)'}}
                 onClick={openSpot}
             />
             <div className='content'>

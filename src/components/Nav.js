@@ -32,7 +32,9 @@ const Nav = () => {
                         <Link to='/allspots' style={{textDecoration: 'none'}}>
                             <h3>All Spots</h3>
                         </Link>    
-                        <h3>Categories</h3>
+                        <Link to='/searchspots' style={{textDecoration: 'none'}}>
+                            <h3>Search</h3>
+                        </Link>
                         <h3>Top Spots</h3>
                         {
                             state && state.user

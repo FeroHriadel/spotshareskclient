@@ -1,0 +1,89 @@
+.spot-search-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.spot-search-form .form-group {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.spot-search-form label {
+    font-family: 'Tulpen One';
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.spot-search-form input {
+    border: 0;
+    border-bottom: 1px white solid;
+    outline: 0;
+    background: 0;
+    width: 97.5%;
+    font-family: 'Ubuntu';
+    color: white;
+}
+
+.spot-search-form input:focus {
+    border-bottom: 2px white solid;
+}
+
+.spot-search-form select {
+    width: 97.5%;
+    background: 0;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px white solid;
+    font-family: 'Ubuntu';
+    color: white;
+}
+
+.spot-search-form select option {
+    color: black;
+}
+
+::placeholder {
+    color: #ddd;
+}
+
+.spot-search-form .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.spot-search-results .deleting-status {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 2rem;
+    border: 2px #9c3611 solid;
+    border-radius: 5px;
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.spot-search-form .btn-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+

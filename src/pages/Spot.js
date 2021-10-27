@@ -24,7 +24,7 @@ const Spot = () => {
     //GET SPOT BY SLUG FROM PARAMS
     const params = useParams();
 
-    const [getSpot, { error, loading, data }] = useLazyQuery(GET_SPOT);
+    const [getSpot, { error, loading, data }] = useLazyQuery(GET_SPOT, {fetchPolicy: "no-cache"});
 
     useEffect(() => {
         const slug = params.spotslug;

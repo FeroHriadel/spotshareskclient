@@ -57,7 +57,7 @@ const Profile = () => {
             });
         }
 
-        if (error) {
+        if (!data && error) {
             setMessage('Error. Something went wrong.')
         }
     }, [data, error]);

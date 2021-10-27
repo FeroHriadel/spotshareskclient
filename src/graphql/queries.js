@@ -130,3 +130,42 @@ export const ALL_SPOTS = gql`
         }
     }
 `;
+
+export const SEARCH_SPOTS = gql`
+    query searchSpots($input: SearchSpotsInput) {
+        searchSpots(input: $input) {
+            spots {
+                name
+                slug
+                images {
+                    url
+                    public_id
+                }
+                where
+                highlight
+                description
+                category {
+                    name
+                    _id
+                }
+                tags {
+                    image {
+                        url
+                        public_id
+                    }
+                    name
+                    _id
+                }
+                lat
+                long
+                postedBy
+                username
+                createdAt
+                updatedAt
+                likes
+            }
+            page
+            numberOfPages
+        }
+    }
+`;
