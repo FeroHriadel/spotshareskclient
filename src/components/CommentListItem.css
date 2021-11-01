@@ -1,0 +1,54 @@
+.comment-list-item {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    outline: #ddd 1px solid;
+    width: 97.5%;
+    margin: 1rem;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 10px #333;
+    position: relative;
+}
+
+.comment-list-item .image-div {
+    -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%);
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    box-shadow: -5px 5px 10px #333;
+}
+
+.comment-list-item h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: #eee;
+    font-family: 'Ubuntu';
+}
+
+.comment-list-item p {
+    color: #ddd;
+    font-family: 'Ubuntu';
+}
+
+.comment-list-item .comment-delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #c94414;
+    font-size: 00.75rem;
+    cursor: pointer;
+} 
+
+.comment-list-item .clear-fix {
+    clear: both;
+}
+
+
+
+@media (max-width: 650px) {
+    .comment-list-item {
+        width: 90%;
+    }
+}

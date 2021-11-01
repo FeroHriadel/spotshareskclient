@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useLazyQuery, useMutation } from '@apollo/react-hooks';
 import { GET_SPOT } from '../graphql/queries';
 import { SPOT_LIKE } from '../graphql/mutations';
@@ -15,6 +15,11 @@ import './Spot.css';
 
 
 const Spot = () => {
+    //DEFS
+    const history = useHistory();
+
+
+
     //VALUES
     const [mapModalShown, setMapModalShown] = useState(false);
     const [spotGalleryShown, setSpotGalleryShown] = useState(false);
@@ -36,6 +41,9 @@ const Spot = () => {
     //LIKE SPOT
     const [likeMessage, setLikeMessage] = useState('');
     const [spotLike] = useMutation(SPOT_LIKE, {
+        onCompleted: () => {
+            getSpot({variables: {slug: params.spotslug}});
+        },
         onError: (error) => {
             console.log(error);
             setLikeMessage(error && error.message ? error.message : 'Spot like failed, sorry');
@@ -154,7 +162,7 @@ const Spot = () => {
                                 onClick={() => {
                                     spotLike({
                                         variables: {input: {slug: params.spotslug}}, 
-                                        refetchQueries: [{query: GET_SPOT, variables: {slug: data.getSpot.slug}}]
+                                        // refetchQueries: [{query: GET_SPOT, variables: {slug: data.getSpot.slug}}]
                                     });
                                 }}
                             >
@@ -189,6 +197,13 @@ const Spot = () => {
                             Gallery: 
                             <span className='details'>Click here to show spot gallery</span> 
                         </p>
+
+                        <div className='buttons-section'>
+                            <div className='btn' onClick={() => setMapModalShown(true)}> <p>Map</p> </div>
+                            <div className='btn' onClick={() => setSpotGalleryShown(true)}> <p>Gallery</p> </div>
+                            <div className='btn' onClick={() => history.push(`/comments/${data.getSpot.slug}`)} > <p>Comments</p> </div>
+                        </div>
+
                     </div>
                 }
 

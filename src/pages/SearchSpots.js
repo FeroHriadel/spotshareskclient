@@ -58,7 +58,7 @@ const SearchSpots = () => {
     
 
 
-    //DELETE SPOT           //only deletes the last spot after route change. Why???
+    //DELETE SPOT           //if there's only 1 spot left it only deletes it after route change. Why???
     const { state } = useContext(AuthContext);
 
     const [modalShown, setModalShown] = useState(false);

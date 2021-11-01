@@ -25,6 +25,8 @@ import Spot from './pages/Spot';
 import AllSpots from './pages/AllSpots';
 import EditSpot from './pages/EditSpot';
 import SearchSpots from './pages/SearchSpots';
+import Comments from './pages/Comments';
+import AddComment from './pages/AddComment';
 import NotFound from './pages/NotFound';
 
 
@@ -70,6 +72,8 @@ const App = () => {
           <Route exact path='/allspots' component={AllSpots} />
           <PrivateRoute exact path='/editspot/:spotslug' component={EditSpot} />
           <Route exact path='/searchspots' component={SearchSpots} />
+          <Route exact path='/comments/:spotslug' component={Comments} />
+          <PrivateRoute exact path='/addcomment/:spotslug' component={AddComment} />
           <Route component={NotFound} />
         </Switch>
       </ApolloProvider>

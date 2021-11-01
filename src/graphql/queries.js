@@ -169,3 +169,29 @@ export const SEARCH_SPOTS = gql`
         }
     }
 `;
+
+
+
+//COMMENT QUERIES
+export const GET_COMMENTS = gql`
+query getComments($input: GetCommentsInput) {
+    getComments(input: $input) {
+        page
+        numberOfPages
+        comments {
+            spotSlug
+            commentedBy {
+                _id
+                username
+            }
+            createdAt
+            image {
+                public_id
+                url
+            }
+            content
+            _id
+        }
+    }
+}
+`;

@@ -1,0 +1,28 @@
+.comments-page-wrapper .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+    font-family: 'Tulpen One';
+}
+
+.comments-page-wrapper .get-more-btn {
+    width: 100%;
+    text-align: center;
+    font-family: 'Ubuntu';
+    color: #ddd;
+    cursor: pointer;
+    transition: 0.4s linear;
+}
+
+.comments-page-wrapper .get-more-btn:hover {
+    color: white;
+    text-shadow: #ddd 0 0 7.5px;
+}
+
+.comments-page-wrapper .get-more-btn:active {
+    transform: scale(0.9);
+    color: orangered;
+    text-shadow: orange 0 0 7.5px;
+}

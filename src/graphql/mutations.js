@@ -159,8 +159,6 @@ export const SPOT_DELETE = gql`
   }
 `;
 
-
-
 export const SPOT_LIKE = gql`
   mutation spotLike($input: SpotLikeInput!) {
       spotLike(input: $input) {
@@ -193,5 +191,37 @@ export const SPOT_LIKE = gql`
         updatedAt
         likes
     }
+  }
+`;
+
+
+
+
+//COMMENT MUTATIONS
+export const COMMENT_CREATE = gql`
+  mutation commentCreate($input: CommentCreateInput!) {
+    commentCreate(input: $input) {
+        spotSlug
+        image {
+            url
+            public_id
+        }
+        content
+        commentedBy {
+            username
+        }
+        createdAt
+    }
+  }
+`;
+
+export const COMMENT_DELETE = gql`
+  mutation commentDelete($input: CommentDeleteInput!) {
+      commentDelete(input: $input) {
+          _id
+          image {
+              public_id
+          }
+      }
   }
 `;
