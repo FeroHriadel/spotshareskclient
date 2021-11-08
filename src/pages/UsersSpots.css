@@ -1,0 +1,44 @@
+.users-spots-page-container .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.users-spots-page-container .user-spots-list {
+    list-style-type: none;
+}
+
+.users-spots-page-container .user-spots-list .list-item {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.users-spots-page-container .user-spots-list .list-item .spot-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.users-spots-page-container .list-item .spot-name {
+    color: #eee;
+    font-size: 2rem;
+    font-family: 'Ubuntu';
+    margin-bottom: 0.5rem;
+}
+
+.users-spots-page-container .list-item .spot-highlight {
+    color: #ddd;
+    font-size: 1rem;
+    font-family: 'Ubuntu';
+}
+
+.users-spots-page-container .list-item .spot-category {
+    color: #ddd;
+    font-size: 1rem;
+    font-family: 'Ubuntu';
+}

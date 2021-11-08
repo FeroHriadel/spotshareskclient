@@ -6,23 +6,21 @@ import { SPOT_DELETE } from '../graphql/mutations'
 import axios from 'axios';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
-import CategorySelect from '../components/CategorySelect';
-import TagSelectSingle from '../components/TagSelectSingle';
-import Button from '../components/Button';
 import SpotListItem from '../components/SpotListItem';
 import Modal from '../components/Modal';
 import './SearchSpots.css';
 
 
 
-const SearchSpots = () => {
+const MySpots = () => {    //recycles SearchSpots.js
     //VALUES
+    const { state } = useContext(AuthContext);
     const [message, setMessage] = useState('');
     const [values, setValues] = useState({
-        searchword: '', //spot name
+        searchword: '',
         category: '',
         tag: '',
-        postedBy: '',
+        postedBy: state && state.user && state.user.email ? state.user.email : '',
         sortBy: ''
     })
     const { searchword, category, tag, postedBy, sortBy } = values;
@@ -41,7 +39,7 @@ const SearchSpots = () => {
         fetchPolicy: "no-cache",
         onCompleted: (data) => {
             !data.searchSpots.spots || data.searchSpots.spots.length === 0 
-                ? setMessage('No spots matching your criteria found') 
+                ? setMessage('No spots found') 
                 : setMessage('');
             setResults({
                 page: data.searchSpots.page, 
@@ -55,12 +53,17 @@ const SearchSpots = () => {
             console.log(error);
         }
     });
+
+    useEffect(() => {
+        setMessage('Getting your spots...');
+        searchSpots({
+            variables: {input: {...values}}
+        })
+    }, []);
     
 
 
-    //DELETE SPOT           //if there's only 1 spot left it only deletes it after route change. Why???
-    const { state } = useContext(AuthContext);
-
+    //DELETE SPOT
     const [modalShown, setModalShown] = useState(false);
     const [modalText, setModalText] = useState('Please confirm you want to delete the spot');
     const [deletingStatus, setDeletingStatus] = useState('');
@@ -118,9 +121,9 @@ const SearchSpots = () => {
 
 
     //INFINITE SCROLL
-    const [allFound, setAllFound] = useState(false); //stops loadMore calls when all found
-    
-    useEffect(() => { //pleas double-check if this is working correctly
+    const [allFound, setAllFound] = useState(false);
+
+    useEffect(() => {
         let cardContent = document.querySelector('.content-wrapper');
         const loadMore = () => {
             console.log('curPg: ' + page + ', currNumOfPgs: ' + numberOfPages)
@@ -146,26 +149,26 @@ const SearchSpots = () => {
 
 
     //CHANGE HANDLER
-    const handleChange = e => {
-        setMessage('');
-        setValues({...values, [e.target.name]: e.target.value});
-    }
+    // const handleChange = e => {
+    //     setMessage('');
+    //     setValues({...values, [e.target.name]: e.target.value});
+    // }
 
 
 
     //SUBMIT HANDLER
-    const handleSubmit = e => {
-        e.preventDefault();
-        setResults({ //reset results found on previous criteria
-            page: 1,
-            numberOfPages: 2,
-            spots: []
-        });
-        setMessage('Searching...');
-        searchSpots({
-            variables: {input: {...values}}
-        })
-    }
+    // const handleSubmit = e => {
+    //     e.preventDefault();
+    //     setResults({ //reset results found on previous criteria
+    //         page: 1,
+    //         numberOfPages: 2,
+    //         spots: []
+    //     });
+    //     setMessage('Searching...');
+    //     searchSpots({
+    //         variables: {input: {...values}}
+    //     })
+    // }
 
 
 
@@ -177,45 +180,10 @@ const SearchSpots = () => {
                 modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} modalText={modalText} />
             }
 
-            <BigCard heading='SEARCH SPOTS'>
-                <form className='spot-search-form'>
-                    <div className='form-group'>
-                        <label htmlFor='searchword'>Name</label>
-                        <input
-                            name='searchword'
-                            value={searchword}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <CategorySelect handleChange={handleChange} selectedCategory={category} />
-
-                    <TagSelectSingle handleChange={handleChange} />
-
-                    <div className='form-group'>
-                        <label htmlFor='postedBy'>Author</label>
-                        <input
-                            name='postedBy'
-                            value={postedBy}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <div className='form-group'>
-                        <label htmlFor='sortBy'>Sort by</label>
-                        <select name='sortBy' onChange={handleChange}>
-                            <option value=''>Oldest</option>
-                            <option value='recent'>Recent</option>
-                            <option value='alphabetically'>Alphabetically</option>
-                        </select>
-                    </div>
-
+            <BigCard heading='MY SPOTS'>
+                <div className='spot-search-form'>
                     {message && <p className='message'>{message}</p>}
-
-                    <div className='btn-wrapper'>
-                        <Button buttonText='Search' action={handleSubmit} />
-                    </div>
-                </form>
+                </div>
 
                 <section className='spot-search-results'>
                    {
@@ -233,4 +201,4 @@ const SearchSpots = () => {
     )
 }
 
-export default SearchSpots
+export default MySpots

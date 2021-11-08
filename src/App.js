@@ -27,6 +27,10 @@ import EditSpot from './pages/EditSpot';
 import SearchSpots from './pages/SearchSpots';
 import Comments from './pages/Comments';
 import AddComment from './pages/AddComment';
+import MySpots from './pages/MySpots';
+import SearchUsers from './pages/SearchUsers';
+import PublicProfile from './pages/PublicProfile';
+import UsersSpots from './pages/UsersSpots';
 import NotFound from './pages/NotFound';
 
 
@@ -74,6 +78,10 @@ const App = () => {
           <Route exact path='/searchspots' component={SearchSpots} />
           <Route exact path='/comments/:spotslug' component={Comments} />
           <PrivateRoute exact path='/addcomment/:spotslug' component={AddComment} />
+          <PrivateRoute exact path='/myspots' component={MySpots} />
+          <Route exact path='/searchusers' component={SearchUsers} />
+          <Route exact path='/publicprofile/:username' component={PublicProfile} />
+          <Route exact path='/usersspots/:username' component={UsersSpots} />
           <Route component={NotFound} />
         </Switch>
       </ApolloProvider>

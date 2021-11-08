@@ -1,0 +1,82 @@
+.search-users-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.search-users-wrapper .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+}
+
+.search-users-wrapper .user-list {
+    list-style-type: none;
+}
+
+.search-users-wrapper .user-list .user-list-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-users-wrapper .user-list .user-list-item .photo {
+    margin: 10px;
+}
+
+.search-users-wrapper .user-list .user-list-item .user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.search-users-wrapper .user-list .user-list-item .user-details p {
+    color: #ddd;
+    font-family: 'Ubuntu';
+}
+
+.search-users-wrapper .user-list .user-list-item .user-details p:nth-child(1) {
+    color: white;
+}
+
+.search-users-wrapper .user-list .user-list-item .user-details .buttons-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.search-users-wrapper .user-list .user-list-item .btn {
+    width: 100px;
+    min-width: 100px;
+    height: 1.5rem;
+    background-color: #333;
+    color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Ubuntu';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5px;
+    transition: 0.4s linear;
+    cursor: pointer;
+}
+
+.search-users-wrapper .user-list .user-list-item .btn:hover {
+    transform: scale(1.05);
+}
+
+.search-users-wrapper .user-list .user-list-item .btn:active {
+    transform: scale(0.9);
+}
+
+.search-users-wrapper .user-list .user-list-item .btn > p {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+}

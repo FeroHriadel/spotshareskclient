@@ -1,0 +1,73 @@
+.public-profile-container .content-wrapper .image-div {
+    /* -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%); */
+    float: left;
+    width: 260px;
+    min-width: 260px;
+    height: 260px;
+    min-height: 260px;
+    background: url(../images//user.png);
+    background-size: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: #ccc 2px solid;
+}
+
+.public-profile-container .content-wrapper h2 {
+    font-family: 'Ubuntu';
+    color: #eee;
+    line-height: 1.5;
+    text-align: justify;
+    margin-right: 1rem;
+    padding: 0 0.75rem;
+}
+
+.public-profile-container .content-wrapper .text {
+    font-family: 'Ubuntu';
+    color: #ddd;
+    line-height: 1.5;
+    text-align: justify;
+    margin-right: 1rem;
+    padding: 0 0.75rem;
+}
+
+.public-profile-container .message {
+    color: #9c3611;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Tulpen One';
+    text-align: center;
+    width: 100%;
+}
+
+.public-profile-container .btn {
+    width: 100px;
+    min-width: 100px;
+    height: 1.5rem;
+    background-color: #333;
+    color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Ubuntu';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    transition: 0.4s linear;
+    cursor: pointer;
+}
+
+.public-profile-container .btn:hover {
+    transform: scale(1.05);
+}
+
+.public-profile-container .btn:active {
+    transform: scale(0.9);
+}
+
+.public-profile-container .btn > p {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+}

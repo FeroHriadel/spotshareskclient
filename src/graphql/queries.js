@@ -13,6 +13,43 @@ export const PROFILE = gql`
     ${USER_INFO}
 `;
 
+export const GET_USERS = gql`
+query getUsers {
+    getUsers {
+      _id
+      about
+      createdAt
+      _id
+      username
+      email
+      about
+      image {
+        public_id
+        url
+      }
+      role
+    }
+  }
+`
+
+export const PUBLIC_PROFILE = gql`
+query publicProfile($input: publicProfileInput) {
+    publicProfile(input: $input) {
+      _id
+      username
+      createdAt
+      updatedAt
+      email
+      about
+      image {
+        public_id
+        url
+      }
+      role
+    }
+  }
+`;
+
 
 
 //CATEGORY QUERIES
@@ -168,6 +205,40 @@ export const SEARCH_SPOTS = gql`
             numberOfPages
         }
     }
+`;
+
+export const USERS_SPOTS = gql`
+query usersSpots($input: UsersSpotsInput) {
+    usersSpots(input: $input) {
+      name
+      slug
+      where
+      highlight
+      description
+      images {
+        public_id
+        url
+      }
+      category {
+        name
+        _id
+      }
+      tags {
+        image {
+          url
+          public_id
+        }
+        name
+        _id
+      }
+      lat
+      long
+      postedBy
+      createdAt
+      likes
+      username
+    }
+  }
 `;
 
 

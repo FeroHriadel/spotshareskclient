@@ -32,15 +32,18 @@ const Nav = () => {
                         <Link to='/allspots' style={{textDecoration: 'none'}}>
                             <h3>All Spots</h3>
                         </Link>    
-                        <Link to='/searchspots' style={{textDecoration: 'none'}}>
-                            <h3>Search</h3>
-                        </Link>
-                        <h3>Top Spots</h3>
                         {
                             state && state.user
                             &&
                             <Link to='/addspot' style={{textDecoration: 'none'}}>
                                 <h3>Add Spot</h3>
+                            </Link>
+                        }
+                        {
+                            state && state.user
+                            &&
+                            <Link to='/myspots' style={{textDecoration: 'none'}}>
+                                <h3>My Spots</h3>
                             </Link>
                         }
                     </div>
@@ -61,7 +64,7 @@ const Nav = () => {
                         {
                             !state.user
                             &&
-                            <Link to='register' style={{textDecoration: 'none'}}>
+                            <Link to='/register' style={{textDecoration: 'none'}}>
                                 <h3>Register</h3>
                             </Link>
                         }
@@ -81,13 +84,6 @@ const Nav = () => {
                             </Link>
                         }
                         {
-                            state && state.user
-                            &&
-                            <Link to='/myspots' style={{textDecoration: 'none'}}>
-                                <h3>My Spots</h3>
-                            </Link>
-                        }
-                        {
                             state && state.user && state.user.role === 'admin'
                             &&
                             <Link to='/admin' style={{textDecoration: 'none'}}>
@@ -98,11 +94,14 @@ const Nav = () => {
                 </li>
 
                 <li>
-                    <h3 className='main-item'>Community</h3>
+                    <h3 className='main-item'>Search</h3>
                     <div className='sub-items'>
-                        <h3>Discussion</h3>
-                        <h3>Contributors</h3>
-                        <h3>Gallery</h3>
+                        <Link to='/searchspots' style={{textDecoration: 'none'}}>
+                            <h3>Search Spots</h3>
+                        </Link>
+                        <Link to='/searchusers' style={{textDecoration: 'none'}}>
+                            <h3>Search Users</h3>
+                        </Link>
                     </div>
                 </li>
 
