@@ -48,6 +48,10 @@ const SearchSpots = () => {
                 numberOfPages: data.searchSpots.numberOfPages, 
                 spots: [...spots, ...data.searchSpots.spots]
             });
+            let contentWrapper = document.querySelector('.content-wrapper');
+            if (contentWrapper) {
+                contentWrapper.scrollTop = contentWrapper.scrollTop + 300;
+            }
         },
         onError: (error) => {
             setMessage('Error. Search failed');

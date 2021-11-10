@@ -115,11 +115,6 @@ const Spot = () => {
                             className='image-div'
                             style={{
                                 background: `url(${data.getSpot.images[0].url}) no-repeat center center/cover`,
-                                width: '260px',
-                                minWwidth: '260px',
-                                height: '260px',
-                                minHeight: '260px',
-                                borderRadius: '50%'
                             }}
                         />
                         

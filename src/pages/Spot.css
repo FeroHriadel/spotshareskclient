@@ -39,6 +39,11 @@
     float: left;
     margin-right: 10px;
     margin-bottom: 10px;
+    width: 260px;
+    min-width: 260px;
+    height: 260px;
+    min-height: 260px;
+    border-radius: 50%;
 }
 
 .spot-page-content .orange {
@@ -96,6 +101,26 @@
 
 
 @media (max-width: 550px) {
+    .spot-page-content .image-div {
+        -webkit-shape-outside: circle(50%);
+        shape-outside: circle(50%);
+        float: none;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 240px;
+        min-width: 240px;
+        height: 240px;
+        min-height: 240px;
+    }
+
+    .spot-page-content .details {
+        margin-left: 2px;
+    }
+
+    .spot-page-content .thumbs-up {
+        margin-left: 0.5rem;
+    }
+
     .spot-page-content .buttons-section {
         flex-direction: column;
         justify-content: center;

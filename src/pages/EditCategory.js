@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useQuery, useLazyQuery, useMutation } from '@apollo/react-hooks';
-import { GET_CATEGORY, ALL_CATEGORIES } from '../graphql/queries';
+import { GET_CATEGORY, ALL_CATEGORIES, ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
 import { CATEGORY_UPDATE } from '../graphql/mutations';
 import { FaCaretLeft } from 'react-icons/fa';
 import Layout from '../components/Layout';
@@ -69,7 +69,13 @@ const EditCategory = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        categoryUpdate({variables: {input: values}, refetchQueries: [{query: ALL_CATEGORIES}]})
+        if (name.trim() === '') setMessage('Category name cannot be empty');
+        else {
+            categoryUpdate({
+                variables: {input: values}, 
+                refetchQueries: [{query: ALL_CATEGORIES}, {query: ALL_SPOTS, variables: {input: 1}}, {query: TOTAL_SPOTS}]
+            })
+        }
     }
 
 

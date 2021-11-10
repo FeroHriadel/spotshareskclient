@@ -57,8 +57,9 @@ const Profile = () => {
             });
         }
 
-        if (!data && error) {
-            setMessage('Error. Something went wrong.')
+        if (error) {
+            setMessage('Error. Something went wrong.');
+            setTimeout(() => setMessage(''), 2000);
         }
     }, [data, error]);
 

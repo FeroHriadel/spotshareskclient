@@ -20,7 +20,7 @@ const EditSpot = () => {
     //GET SPOT
     const params = useParams();
     
-    const [getSpot, { error, loading, data }] = useLazyQuery(GET_SPOT);
+    const [getSpot, { error, loading, data }] = useLazyQuery(GET_SPOT, {fetchPolicy: 'no-cache'});
 
     useEffect(() => {
         const slug = params.spotslug;
