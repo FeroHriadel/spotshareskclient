@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { FaCaretLeft } from 'react-icons/fa';
 import { useMutation } from '@apollo/react-hooks';
 import { useLazyQuery } from "@apollo/react-hooks";
-import { GET_TAG, ALL_TAGS } from "../graphql/queries";
+import { GET_TAG, ALL_TAGS, TOTAL_SPOTS, ALL_SPOTS } from "../graphql/queries";
 import { TAG_UPDATE } from "../graphql/mutations";
 import omitDeep from 'omit-deep';
 
@@ -71,16 +71,6 @@ const EditTag = () => {
                 history.push(`/managetags`)
             }, 2000);
         },
-        //THIS TURNED OUT UNNECESSARY => ALL_TAGS GOT UPDATED SOMEHOW EVEN WITHOUT ME EDITING THEM
-        // update: (cache, {data: { tagUpdate }}) => {
-        //     const { allTags } = cache.readQuery({query: ALL_TAGS});
-        //     cache.writeQuery({
-        //         query: ALL_TAGS,
-        //         data: {
-        //             allTags: [tagUpdate, ...allTags]
-        //         }
-        //     })
-        // },
         onError: (error) => {
             console.log(error);
             setMessage('Failed. Perhaps a tag with the same name already exists?');
@@ -92,7 +82,10 @@ const EditTag = () => {
 
         if (name.trim() === '') return setMessage('Tag name is required');
 
-        tagUpdate({variables: {input: values}});
+        tagUpdate({
+            variables: {input: values},
+            refetchQueries: [{query: ALL_TAGS}, {query: TOTAL_SPOTS}, {query: ALL_SPOTS, variables: {input: 1}}]
+        });
     }
 
 

@@ -1,0 +1,32 @@
+.admin-option {
+    width: 90%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    border: #ddd solid 1px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.4s linear;
+}
+
+.admin-option:hover {
+    transform: scale(1.025);
+    box-shadow: 0 0 5px #ddd;
+}
+
+
+.admin-option h3 {
+    color: #eee;
+    font-family: 'Ubuntu';
+    font-size: 1rem;
+}
+
+.admin-option p {
+    color: #ddd;
+    font-family: 'Ubuntu';
+    font-size: 0.75rem;
+}

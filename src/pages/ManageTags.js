@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
-import { ALL_TAGS } from '../graphql/queries';
+import { ALL_TAGS, ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
 import { TAG_DELETE } from '../graphql/mutations';
 import Layout from '../components/Layout';
 import Button from '../components/Button';
@@ -53,7 +53,10 @@ const ManageTags = () => {
 
     useEffect(() => {
         if (actionConfirmed && tagToDelete) {
-            tagDelete({variables: {input: {slug: tagToDelete.slug}}});
+            tagDelete({
+                variables: {input: {slug: tagToDelete.slug}},
+                refetchQueries: [{query: TOTAL_SPOTS}, {query: ALL_SPOTS, variables: {input: 1}}]
+            });
             setActionConfirmed(false);
             setTagToDelete(null);
         }

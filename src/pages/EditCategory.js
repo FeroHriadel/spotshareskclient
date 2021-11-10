@@ -58,7 +58,10 @@ const EditCategory = () => {
             setMessage('Category updated. Redirecting back to category list...'); 
             setTimeout(() => history.push('/managecategories'), 2000);
         },
-        onError: (error) => {console.log(error); setMessage('Category update failed')}
+        onError: (error) => {
+            console.log(error); 
+            error && error.message ? setMessage(JSON.stringify(error.message)) : setMessage('Category update failed');
+        }
     });
 
      //all queries (so we can refetch them)

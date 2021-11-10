@@ -31,7 +31,12 @@ const Nav = () => {
                     <div className='sub-items'>
                         <Link to='/allspots' style={{textDecoration: 'none'}}>
                             <h3>All Spots</h3>
-                        </Link>    
+                        </Link>
+
+                        <Link to='/spotsmap' style={{textDecoration: 'none'}}>
+                            <h3>Map</h3>
+                        </Link>
+
                         {
                             state && state.user
                             &&
@@ -39,6 +44,7 @@ const Nav = () => {
                                 <h3>Add Spot</h3>
                             </Link>
                         }
+
                         {
                             state && state.user
                             &&

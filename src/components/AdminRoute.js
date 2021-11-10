@@ -33,6 +33,22 @@ const AdminRoute = ({ children, ...rest }) => {
             <h1 style={{color: 'white', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '3rem', letterSpacing: '2px'}}>
                 Access denied
             </h1>
+
+            <Link to='login' style={{textDecoration: 'none'}}>
+                <h3 
+                    style={{color: '#ddd', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '1.5rem', marginTop: '1rem', textDecoration: 'none'}}
+                >
+                    Login?
+                </h3>
+            </Link>
+
+            <Link to='/' style={{textDecoration: 'none'}}>
+                <h3 
+                    style={{color: '#ddd', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '1.5rem', marginTop: '1rem', textDecoration: 'none'}}
+                >
+                    Go Home
+                </h3>
+            </Link>
         </Layout>
     )
 }

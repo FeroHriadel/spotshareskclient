@@ -123,9 +123,7 @@ const SearchSpots = () => {
     useEffect(() => { //pleas double-check if this is working correctly
         let cardContent = document.querySelector('.content-wrapper');
         const loadMore = () => {
-            console.log('curPg: ' + page + ', currNumOfPgs: ' + numberOfPages)
-            let scrollTop = cardContent.scrollTop;
-            let scrollHeight = cardContent.scrollHeight;                
+            console.log('curPg: ' + page + ', currNumOfPgs: ' + numberOfPages);              
             if (page < numberOfPages && !allFound) {
                 console.log('is getting pg: ' + (page+1) + ', numOfPgs: ' + numberOfPages)
                 searchSpots({

@@ -77,19 +77,33 @@ export const GET_CATEGORY = gql`
 export const ALL_TAGS = gql`
     query {
         allTags {
-            ...tagInfo
+            _id
+            name
+            slug
+            image {
+                url
+                public_id
+            }
+            createdAt
+            updatedAt
         }
     }
-    ${TAG_INFO}
 `;
 
 export const GET_TAG = gql`
     query getTag($slug: String!) {
         getTag(slug: $slug) {
-            ...tagInfo
+            _id
+            name
+            slug
+            image {
+                url
+                public_id
+            }
+            createdAt
+            updatedAt
         }
     }
-    ${TAG_INFO}
 `;
 
 

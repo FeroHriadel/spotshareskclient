@@ -31,6 +31,7 @@ import MySpots from './pages/MySpots';
 import SearchUsers from './pages/SearchUsers';
 import PublicProfile from './pages/PublicProfile';
 import UsersSpots from './pages/UsersSpots';
+import SpotsMap from './pages/SpotsMap';
 import NotFound from './pages/NotFound';
 
 
@@ -74,6 +75,7 @@ const App = () => {
           <PrivateRoute exact path='/addspot' component={AddSpot} />
           <Route exact path='/spot/:spotslug' component={Spot} />
           <Route exact path='/allspots' component={AllSpots} />
+          <Route exact path='/spotsmap' component={SpotsMap} />
           <PrivateRoute exact path='/editspot/:spotslug' component={EditSpot} />
           <Route exact path='/searchspots' component={SearchSpots} />
           <Route exact path='/comments/:spotslug' component={Comments} />

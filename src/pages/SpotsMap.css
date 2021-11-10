@@ -1,0 +1,33 @@
+#spots-map-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#spots-map-section .load-more-map-btn {
+    width: 100px;
+    min-width: 100px;
+    height: 1.5rem;
+    background-color: #333;
+    color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Ubuntu';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5px;
+    transition: 0.4s linear;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#spots-map-section .load-more-map-btn:hover {
+    transform: scale(1.05);
+}
+
+#spots-map-section .load-more-map-btn:active {
+    transform: scale(0.9);
+}

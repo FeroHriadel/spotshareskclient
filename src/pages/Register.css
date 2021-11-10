@@ -50,3 +50,10 @@
     position: absolute;
     bottom: 0rem;
 }
+
+
+@media (max-width: 650px) {
+    .register-form .form-group {
+        width: 90%;
+    }
+}

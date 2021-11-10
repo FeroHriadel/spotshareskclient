@@ -74,7 +74,13 @@
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+    .login-form .form-group {
+        width: 90%;
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    
     .login-form .message {
         font-size: 1rem;
     }

@@ -7,7 +7,7 @@ import Modal from '../components/Modal';
 import { FaCaretLeft } from 'react-icons/fa';
 import './ManageCategories.css';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { ALL_CATEGORIES } from '../graphql/queries';
+import { ALL_CATEGORIES, ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
 import { CATEGORY_DELETE } from '../graphql/mutations';
 import { useHistory } from 'react-router-dom';
 
@@ -28,11 +28,11 @@ const ManageCategories = () => {
 
     const [categoryDelete] = useMutation(CATEGORY_DELETE, {
         onError: (error) => {
-            console.log('Deleting failed:', error);
-            setMessage('Deleting failed');
+            console.log('Deleting failed:', error.message);
+            error && error.message ? setMessage(JSON.stringify(error.message)) : setMessage('Deleting failed');
             setTimeout(() => {
                 setMessage('');
-            }, 2000)
+            }, 3000)
         }
     });
 
@@ -43,7 +43,7 @@ const ManageCategories = () => {
         if (actionConfirmed && categoryToDelete) {
             categoryDelete({
                 variables: {input: {slug: categoryToDelete.slug}},
-                refetchQueries: [{query: ALL_CATEGORIES}]
+                refetchQueries: [{query: ALL_CATEGORIES}, {query: TOTAL_SPOTS}, {query: ALL_SPOTS, variables: {input: 1}}]
             });
 
             setActionConfirmed(false);
@@ -77,7 +77,7 @@ const ManageCategories = () => {
     return (
         <Layout>
             {
-                modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} />
+                modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} modalText='This will also delete all spots in this category. Are you sure?' />
             }
 
             <BigCard heading='Manage Categories'>
