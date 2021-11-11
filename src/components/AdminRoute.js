@@ -17,7 +17,7 @@ const AdminRoute = ({ children, ...rest }) => {
         } else {
             setIsAdmin(false);
         }
-    }, [state.user])
+    }, [state, state.user])
 
 
 

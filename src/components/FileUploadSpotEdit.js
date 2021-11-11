@@ -7,7 +7,7 @@ import axios from 'axios';
 
 //
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { GET_SPOT, ALL_SPOTS } from '../graphql/queries';
+import { ALL_SPOTS } from '../graphql/queries';
 import { SPOT_EDIT } from '../graphql/mutations';
 
 
