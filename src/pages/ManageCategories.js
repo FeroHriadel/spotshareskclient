@@ -49,7 +49,7 @@ const ManageCategories = () => {
             setActionConfirmed(false);
             setCategoryToDelete(null);
         }
-    }, [actionConfirmed]);
+    }, [actionConfirmed, categoryToDelete]);
 
 
 

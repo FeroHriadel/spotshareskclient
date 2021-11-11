@@ -5,6 +5,7 @@ import { SPOT_CREATE } from '../graphql/mutations';
 import { ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
 import { useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import FileUploadMultiple from '../components/FileUploadMultiple';
@@ -48,8 +49,9 @@ const AddSpot = () => {
     useEffect(() => {
         if (state && state.user && state.user.email) setValues({...values, postedBy: state.user.email});
         else setValues({...values, postedBy: ''});
-    }, [state.user]) //had to do this to fill in postedBy => page crashed on logout
+    }, [state.user]) //had to do this to fill in values.postedBy => page crashed on logout
 
+    
 
 
     //QUERIES & MUTATION

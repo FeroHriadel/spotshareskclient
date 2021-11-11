@@ -86,12 +86,16 @@ const MySpots = () => {    //recycles SearchSpots.js
             spotToDelete.images.forEach(img => {
                 axios.post(`${process.env.REACT_APP_REST_ENDPOINT}/removeimage`, {public_id: img.public_id}, {headers: {authtoken: state.user.token}})
             })
+
+            //set delete checkers to default
             setSpotToDelete(null);
+            setActionConfirmed(false);
         },
         onError: (error) => {
             console.log(error);
             setDeletingStatus('Spot delete failed');
             setSpotToDelete(null);
+            setActionConfirmed(false);
             setTimeout(() => {
                 setDeletingStatus('');
             }, 2000);
@@ -116,7 +120,7 @@ const MySpots = () => {    //recycles SearchSpots.js
         if (actionConfirmed) {
             removeSpot(spotToDelete);
         }
-    }, [actionConfirmed]);
+    }, [actionConfirmed, spotToDelete]);
 
 
 

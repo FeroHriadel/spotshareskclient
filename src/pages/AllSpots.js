@@ -61,11 +61,13 @@ const AllSpots = () => {
                 axios.post(`${process.env.REACT_APP_REST_ENDPOINT}/removeimage`, {public_id: img.public_id}, {headers: {authtoken: state.user.token}})
             })
             setSpotToDelete(null);
+            setActionConfirmed(false);
         },
         onError: (error) => {
             console.log(error);
             setDeletingStatus('Spot delete failed');
             setSpotToDelete(null);
+            setActionConfirmed(false);
             setTimeout(() => {
                 setDeletingStatus('');
             }, 2000);
@@ -86,7 +88,7 @@ const AllSpots = () => {
         if (actionConfirmed) {
             removeSpot(spotToDelete);
         }
-    }, [actionConfirmed]);
+    }, [actionConfirmed, spotToDelete]);
 
 
 

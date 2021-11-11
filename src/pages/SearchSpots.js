@@ -62,7 +62,7 @@ const SearchSpots = () => {
     
 
 
-    //DELETE SPOT           //if there's only 1 spot left it only deletes it after route change. Why???
+    //DELETE SPOT
     const { state } = useContext(AuthContext);
 
     const [modalShown, setModalShown] = useState(false);
@@ -86,13 +86,17 @@ const SearchSpots = () => {
             //remove images from Cloudinary
             spotToDelete.images.forEach(img => {
                 axios.post(`${process.env.REACT_APP_REST_ENDPOINT}/removeimage`, {public_id: img.public_id}, {headers: {authtoken: state.user.token}})
-            })
+            });
+
+            //set delete checkers to default
             setSpotToDelete(null);
+            setActionConfirmed(false);
         },
         onError: (error) => {
             console.log(error);
             setDeletingStatus('Spot delete failed');
             setSpotToDelete(null);
+            setActionConfirmed(false);
             setTimeout(() => {
                 setDeletingStatus('');
             }, 2000);
@@ -117,7 +121,7 @@ const SearchSpots = () => {
         if (actionConfirmed) {
             removeSpot(spotToDelete);
         }
-    }, [actionConfirmed]);
+    }, [actionConfirmed, spotToDelete]);
 
 
 

@@ -30,7 +30,7 @@ const PrivateRoute = ({ children, ...rest }) => {
         </React.Fragment>
         :
         <Layout>
-            <h1 style={{color: 'white', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '3rem', letterSpacing: '2px'}}>
+            <h1 style={{color: 'white', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '3rem', letterSpacing: '2px', width: '90%'}}>
                 You have to log in to see this page
             </h1>
 

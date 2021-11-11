@@ -32,7 +32,6 @@ const ManageTags = () => {
     const [tagDelete] = useMutation(TAG_DELETE, {
         update: (cache, { data: { tagDelete }}) => {
             setTagToDelete(null);
-            // console.log(tagDelete)
             const { allTags } = cache.readQuery({query: ALL_TAGS});
             const filteredTags = allTags.filter(t => t.slug !== tagDelete.slug);
             cache.writeQuery({
@@ -60,14 +59,14 @@ const ManageTags = () => {
             setActionConfirmed(false);
             setTagToDelete(null);
         }
-    }, [actionConfirmed])
+    }, [actionConfirmed, tagToDelete])
 
 
 
     //RENDER
     if (loading) return (
         <Layout>
-            <BigCard>
+            <BigCard heading='MANAGE TAGS'>
                 <p className='message'>Loading...</p>
             </BigCard>
         </Layout>
@@ -75,7 +74,7 @@ const ManageTags = () => {
     
     if (error) return (
         <Layout>
-            <BigCard>
+            <BigCard heading='MANAGE TAGS'>
             <p
                 className='go-back-btn'
                 title='Back to Dashboard'
@@ -106,7 +105,7 @@ const ManageTags = () => {
                 modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} />
             }
 
-            <BigCard>
+            <BigCard heading='MANAGE TAGS'>
 
                 <p
                     className='go-back-btn'
