@@ -10,6 +10,7 @@ import BigCard from '../components/BigCard';
 import TagListItem from '../components/TagListItem';
 import { FaCaretLeft } from 'react-icons/fa';
 import Modal from '../components/Modal';
+import './ManageCategories.css';
 
 
 

@@ -8,6 +8,7 @@ import SmallCard from '../components/SmallCard';
 import FileUploadSingle from '../components/FileUploadSingle';
 import Button from '../components/Button';
 import { FaCaretLeft } from 'react-icons/fa';
+import './Profile.css';
 
 
 

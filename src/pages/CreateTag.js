@@ -9,6 +9,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { TAG_CREATE } from '../graphql/mutations';
 import { useQuery } from "@apollo/react-hooks";
 import { ALL_TAGS } from "../graphql/queries";
+import './Profile.css';
 
 
 

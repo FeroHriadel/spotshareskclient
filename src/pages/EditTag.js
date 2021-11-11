@@ -11,6 +11,7 @@ import { useLazyQuery } from "@apollo/react-hooks";
 import { GET_TAG, ALL_TAGS, TOTAL_SPOTS, ALL_SPOTS } from "../graphql/queries";
 import { TAG_UPDATE } from "../graphql/mutations";
 import omitDeep from 'omit-deep';
+import './Profile.css';
 
 
 
