@@ -13,6 +13,7 @@ import CategorySelect from '../components/CategorySelect';
 import TagSelect from '../components/TagSelect';
 import Button from '../components/Button';
 import './AddSpot.css';
+import Meta from '../components/Meta';
 
 
 
@@ -159,6 +160,9 @@ const EditSpot = () => {
 
     if (values.name) return (
         <Layout>
+
+            <Meta />
+
             <BigCard heading='EDIT SPOT'>
                 {/*<FileUploadMultiple 
                     values={values} 

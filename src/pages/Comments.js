@@ -10,6 +10,7 @@ import Button from '../components/Button';
 import BigCard from '../components/BigCard';
 import CommentListItem from '../components/CommentListItem';
 import './Comments.css';
+import Meta from '../components/Meta';
 
 
 
@@ -94,6 +95,9 @@ const Comments = () => {
     //RENDER
     return (
         <div className='comments-page-wrapper'>
+
+            <Meta />
+
             <Layout>
                 <BigCard heading='COMMENTS'>
 

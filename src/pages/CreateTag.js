@@ -10,6 +10,7 @@ import { TAG_CREATE } from '../graphql/mutations';
 import { useQuery } from "@apollo/react-hooks";
 import { ALL_TAGS } from "../graphql/queries";
 import './Profile.css';
+import Meta from '../components/Meta';
 
 
 
@@ -75,6 +76,9 @@ const CreateTag = () => {
     return (
 
             <Layout>
+
+                <Meta />
+
                 <SmallCard>
                     <div className='profile-page-content'> {/* wrong name bc it recycles Profile.css */}
                         <p

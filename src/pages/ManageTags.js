@@ -11,6 +11,7 @@ import TagListItem from '../components/TagListItem';
 import { FaCaretLeft } from 'react-icons/fa';
 import Modal from '../components/Modal';
 import './ManageCategories.css';
+import Meta from '../components/Meta';
 
 
 
@@ -101,6 +102,8 @@ const ManageTags = () => {
 
     return (
         <Layout>
+
+            <Meta />
 
             {
                 modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} />

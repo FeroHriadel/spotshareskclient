@@ -10,6 +10,7 @@ import MapModal from '../components/MapModal';
 import SpotGallery from '../components/SpotGallery';
 import { FaThumbsUp } from 'react-icons/fa';
 import './Spot.css';
+import Meta from '../components/Meta';
 
 
 
@@ -85,6 +86,8 @@ const Spot = () => {
 
     return (
         <Layout>
+
+            <Meta />
 
             {mapModalShown && <MapModal lat={data.getSpot.lat} long={data.getSpot.long} setMapModalShown={setMapModalShown} />}
 

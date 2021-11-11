@@ -9,6 +9,7 @@ import BigCard from '../components/BigCard';
 import SpotListItem from '../components/SpotListItem';
 import Modal from '../components/Modal';
 import './AllSpots.css';
+import Meta from '../components/Meta';
 
 
 
@@ -95,6 +96,9 @@ const AllSpots = () => {
     //RENDER
     return (
         <div className='all-spots-page'>
+
+            <Meta />
+
             <Layout>
                 {
                     modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} modalText={modalText} />

@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Button from '../components/Button';
 import SmallCard from '../components/SmallCard';
 import './CreateCategory.css';
+import Meta from '../components/Meta';
 
 
 
@@ -69,6 +70,9 @@ const CreateCategory = () => {
     //RENDER
     return (
         <div className='create-category-page'>
+
+            <Meta />
+
             <Layout>
                 <SmallCard>
 

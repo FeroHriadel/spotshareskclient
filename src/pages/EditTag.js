@@ -12,6 +12,7 @@ import { GET_TAG, ALL_TAGS, TOTAL_SPOTS, ALL_SPOTS } from "../graphql/queries";
 import { TAG_UPDATE } from "../graphql/mutations";
 import omitDeep from 'omit-deep';
 import './Profile.css';
+import Meta from '../components/Meta';
 
 
 
@@ -93,6 +94,9 @@ const EditTag = () => {
     //RENDER
     return (
             <Layout>
+
+                <Meta />
+
                 <SmallCard>
                     <div className='profile-page-content'> {/* wrong name bc it recycles Profile.css */}
                         <p

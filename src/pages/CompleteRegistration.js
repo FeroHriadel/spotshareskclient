@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import { useMutation } from '@apollo/react-hooks';
 import { USER_CREATE } from '../graphql/mutations';
+import Meta from '../components/Meta';
 
 
 
@@ -70,6 +71,9 @@ const CompleteRegistration = () => {
 
     return (
         <div className='complete-registration-page-container'>
+
+            <Meta />
+
             <Background />
 
             <BigCard heading='PLEASE CONFIRM REGISTRATION'>

@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import Button from '../components/Button';
 import BigCard from '../components/BigCard';
 import './ForgotPassword.css';
-
+import Meta from '../components/Meta';
 
 
 const ForgotPassword = () => {
@@ -37,6 +37,9 @@ const ForgotPassword = () => {
 
     return (
         <div className='forgot-password-page-container'>
+
+            <Meta />
+
             <Layout>
                 <BigCard>
 

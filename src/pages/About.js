@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import './About.css';
+import Meta from '../components/Meta';
 
 
 
@@ -14,6 +15,9 @@ const About = () => {
 
     return (
         <div className='about-page-container'>
+
+            <Meta />
+
             <Layout>
                 <BigCard heading='ABOUT'>
                         <div className='image-div'></div>

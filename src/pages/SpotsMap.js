@@ -15,6 +15,7 @@ import "leaflet-defaulticon-compatibility";
 import './SpotsMap.css';
 import './SearchSpots.css';
 
+import Meta from '../components/Meta';
 
 
 
@@ -120,6 +121,9 @@ const SpotsMap = () => {
     //RENDER
     return (
         <Layout>
+
+            <Meta />
+
             <BigCard heading='SEARCH SPOTS ON MAP'>
                 <form className='spot-search-form'> {/* recycles SearchSpots.css */}
                     <div className='form-group'>

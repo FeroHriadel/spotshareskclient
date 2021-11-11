@@ -10,6 +10,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ALL_CATEGORIES, ALL_SPOTS, TOTAL_SPOTS } from '../graphql/queries';
 import { CATEGORY_DELETE } from '../graphql/mutations';
 import { useHistory } from 'react-router-dom';
+import Meta from '../components/Meta';
 
 
 
@@ -76,6 +77,9 @@ const ManageCategories = () => {
 
     return (
         <Layout>
+
+            <Meta />
+
             {
                 modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} modalText='This will also delete all spots in this category. Are you sure?' />
             }

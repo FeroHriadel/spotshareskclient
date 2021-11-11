@@ -9,6 +9,7 @@ import FileUploadSingle from '../components/FileUploadSingle';
 import Button from '../components/Button';
 import { FaCaretLeft } from 'react-icons/fa';
 import './Profile.css';
+import Meta from '../components/Meta';
 
 
 
@@ -70,6 +71,9 @@ const AddComment = () => {
     //RENDER
     return (
         <Layout>
+
+            <Meta />
+
             <SmallCard>
                 <div className='profile-page-content'> {/* wrong name bc it recycles Profile.css */}
                     <p

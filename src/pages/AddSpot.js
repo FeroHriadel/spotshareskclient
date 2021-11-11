@@ -13,6 +13,7 @@ import CategorySelect from '../components/CategorySelect';
 import TagSelect from '../components/TagSelect';
 import Button from '../components/Button';
 import './AddSpot.css';
+import Meta from '../components/Meta';
 
 
 
@@ -100,6 +101,9 @@ const AddSpot = () => {
     //RENDER
     return (
         <Layout>
+
+            <Meta />
+
             <BigCard heading='ADD SPOT'>
                 <FileUploadMultiple values={values} setValues={setValues} setMessage={setMessage} />
                 { message && <p className='add-spot message'>{message}</p>}

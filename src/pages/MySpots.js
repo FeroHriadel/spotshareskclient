@@ -9,6 +9,7 @@ import BigCard from '../components/BigCard';
 import SpotListItem from '../components/SpotListItem';
 import Modal from '../components/Modal';
 import './SearchSpots.css';
+import Meta from '../components/Meta';
 
 
 
@@ -179,6 +180,8 @@ const MySpots = () => {    //recycles SearchSpots.js
     //RENDER
     return (
         <Layout>
+
+            <Meta />
 
             {
                 modalShown && <Modal setActionConfirmed={setActionConfirmed} setModalShown={setModalShown} modalText={modalText} />

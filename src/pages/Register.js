@@ -6,6 +6,7 @@ import SmallCard from '../components/SmallCard';
 import './Register.css';
 import Button from '../components/Button';
 import { auth } from '../firebase';
+import Meta from '../components/Meta';
 
 
 
@@ -99,6 +100,9 @@ const Register = () => {
     //RENDER
     return (
         <div className='register-page-container'>
+
+            <Meta />
+
             <Layout>
                 <SmallCard>
                     {showRegisterForm()}

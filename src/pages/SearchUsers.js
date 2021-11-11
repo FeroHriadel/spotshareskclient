@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import userPng from '../images/user.png';
 import './SearchUsers.css';
+import Meta from '../components/Meta';
 
 
 const SearchUsers = () => {
@@ -31,6 +32,9 @@ const SearchUsers = () => {
     //RENDER
     return (
         <Layout>
+
+            <Meta />
+
             <BigCard heading='USERS'>
                 <div className='search-users-wrapper'>
                     

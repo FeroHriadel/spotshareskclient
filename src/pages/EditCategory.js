@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import Button from '../components/Button';
 import SmallCard from '../components/SmallCard';
 import './CreateCategory.css'; //uses the same css as CreateCategory
+import Meta from '../components/Meta';
 
 
 
@@ -83,6 +84,9 @@ const EditCategory = () => {
     //RENDER
     return (
         <div className='create-category-page'> {/* wrong name but it's needed bc it recycles CreateCategory.css*/}
+
+            <Meta />
+
             <Layout>
                 <SmallCard>
 

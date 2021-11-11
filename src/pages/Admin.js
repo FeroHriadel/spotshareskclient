@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import AdminOption from '../components/AdminOption';
 import SmallCard from '../components/SmallCard';
 import './Admin.css';
+import Meta from '../components/Meta';
 
 
 
@@ -14,6 +15,9 @@ const Admin = () => {
 
     return (
         <Layout>
+
+            <Meta />
+
             <SmallCard>
                 <div className='admin-page-content'>
                     <h1>Admin Dashboard</h1>

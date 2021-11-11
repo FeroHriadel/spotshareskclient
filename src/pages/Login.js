@@ -8,6 +8,7 @@ import { auth, googleAuthProvider } from '../firebase';
 import { useMutation } from '@apollo/react-hooks';
 import { USER_CREATE } from '../graphql/mutations'; //signup and signin do the same thing
 import './Login.css';
+import Meta from '../components/Meta';
 
 
 
@@ -173,6 +174,7 @@ const Login = () => {
 
     return (
         <div className='login-page-container'>
+            <Meta />
             <Layout>
                 <SmallCard>
                     {showLoginForm()}

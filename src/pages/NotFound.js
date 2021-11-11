@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Meta from '../components/Meta';
 
 
 
@@ -11,6 +12,9 @@ const NotFound = () => {
 
     return (
         <Layout>
+
+            <Meta />
+
             <h1 style={{color: 'white', fontFamily: 'Tulpen One', textAlign: 'center', fontSize: '3rem', letterSpacing: '2px'}}>
                 Page not found
             </h1>

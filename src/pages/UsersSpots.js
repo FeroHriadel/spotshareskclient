@@ -5,6 +5,7 @@ import { USERS_SPOTS } from '../graphql/queries';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import './UsersSpots.css';
+import Meta from '../components/Meta';
 
 
 
@@ -61,6 +62,9 @@ const UsersSpots = () => {
 
     return (
         <div className='users-spots-page-container'>
+
+            <Meta />
+
             <Layout>
                 <BigCard heading='USERS SPOTS'>
                     {message && <p className='message'>{message}</p>}

@@ -12,6 +12,7 @@ import Button from '../components/Button';
 import FileUploadSingle from '../components/FileUploadSingle';
 import ResetPassword from '../components/ResetPassword';
 import './Profile.css';
+import Meta from '../components/Meta';
 
 
 
@@ -97,6 +98,9 @@ const Profile = () => {
 
     return (
         <Layout>
+
+            <Meta />
+
             <SmallCard>
                 <div ref={wrapper} className='profile-page-content'>
                     <h1>My Profile</h1>

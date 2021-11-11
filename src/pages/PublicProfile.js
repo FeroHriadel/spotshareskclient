@@ -5,6 +5,7 @@ import { PUBLIC_PROFILE } from '../graphql/queries';
 import Layout from '../components/Layout';
 import BigCard from '../components/BigCard';
 import './PublicProfile.css';
+import Meta from '../components/Meta';
 
 
 
@@ -82,6 +83,9 @@ const PublicProfile = () => {
 
     return (
         <div className='public-profile-container'>
+
+            <Meta />
+
             <Layout>
 
                 <BigCard heading='PUBLIC PROFILE'>               
