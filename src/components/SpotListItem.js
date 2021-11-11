@@ -16,7 +16,7 @@ const SpotListItem = ({ spot, setModalShown, setSpotToDelete }) => {
 
     //OPEN SPOT (onClick)
     const openSpot = () => {
-        window.open(`${process.env.REACT_APP_CLIENT_DOMAIN}/spot/${spot.slug}`)
+        history.push(`/spot/${spot.slug}`)
     }
 
 
