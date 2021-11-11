@@ -5,7 +5,6 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks'
 import Layout from './components/Layout';
 
-/* without lazy & suspense
 import Home from './pages/Home';
 import About from './pages/About';
 import Register from './pages/Register';
@@ -35,8 +34,8 @@ import PublicProfile from './pages/PublicProfile';
 import UsersSpots from './pages/UsersSpots';
 import SpotsMap from './pages/SpotsMap';
 import NotFound from './pages/NotFound';
-*/
 
+/*with lazy & suspense
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Register = lazy(() => import('./pages/Register'));
@@ -66,7 +65,7 @@ const PublicProfile = lazy(() => import('./pages/PublicProfile'));
 const UsersSpots = lazy(() => import('./pages/UsersSpots'));
 const SpotsMap = lazy(() => import('./pages/SpotsMap'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
+*/
 
 
 const App = () => {
@@ -90,7 +89,7 @@ const App = () => {
 
   return (
       <ApolloProvider client={client}>
-        <Suspense fallback={
+        {/*<Suspense fallback={
           <Layout>
             <h1 style={{
               fontFamily: `Tulpen One`,
@@ -101,7 +100,7 @@ const App = () => {
               Loading...
             </h1>
           </Layout>
-        }>
+        }>*/}
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/about' component={About} />
@@ -131,7 +130,7 @@ const App = () => {
             <Route exact path='/usersspots/:username' component={UsersSpots} />
             <Route component={NotFound} />
           </Switch>
-        </Suspense>
+        {/*</Suspense>*/}
       </ApolloProvider>
   );
 }
