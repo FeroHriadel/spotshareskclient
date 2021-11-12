@@ -87,7 +87,7 @@ const Spot = () => {
     return (
         <Layout>
 
-            <Meta />
+            <Meta title='SpotShare | Spot Details' />
 
             {mapModalShown && <MapModal lat={data.getSpot.lat} long={data.getSpot.long} setMapModalShown={setMapModalShown} />}
 

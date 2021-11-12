@@ -16,7 +16,7 @@ const About = () => {
     return (
         <div className='about-page-container'>
 
-            <Meta />
+            <Meta title='About SpotShare'/>
 
             <Layout>
                 <BigCard heading='ABOUT'>
@@ -24,7 +24,7 @@ const About = () => {
                         <p>
                             <b className='brown'>Want to see something interesting in Slovakia but want to avoid crowds?</b>
                             <br />
-                            SpotShare is a website where you can find places just like that. We have everything for everyone. Interested in the outdoors? Wanna find a pub that is not crawling with tourists? Thinking where to go on a road trip? Just want to go somewhere interesting in the town? We have it for you. <span className='orange'><b onClick={() => history.push('/allspots')}>Check out our spots...</b></span>
+                            SpotShare is a website where you can find places just like that. We have everything for everyone. Interested in the outdoors? Wanna find a pub that is not crawling with tourists? Deciding where to go on a road trip? Just want to go somewhere interesting in the town? We have it for you. <span className='orange'><b onClick={() => history.push('/allspots')}>Check out our spots...</b></span>
                             <br />
                             SpotShare is an open-community site and new spots are always welcome. If you have seen a non-main-stream place you'd like to <span className='orange' onClick={() => history.push('/addspot')}><b>share</b></span> with people we absolutely encourage you to do so! All community benefits from your tips :)
                             <br />

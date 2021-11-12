@@ -97,7 +97,7 @@ const AllSpots = () => {
     return (
         <div className='all-spots-page'>
 
-            <Meta />
+            <Meta title='SpotShare | All Spots' />
 
             <Layout>
                 {

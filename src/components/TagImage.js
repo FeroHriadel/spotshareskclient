@@ -14,7 +14,8 @@ const TagImage = ({ tag }) => {
                 border: tag && tag.image && tag.image.url ? 'none' : '2px #ddd solid',
                 boxShadow: tag && tag.image && tag.image.url ? 'none' : '#333 0 0 5px',
                 display: 'inline-block',
-                marginRight: '1rem',
+                marginRight: '0.5rem',
+                marginLeft: '0.5rem',
                 marginBottom: 'auto',
             }}
             title={tag.name}

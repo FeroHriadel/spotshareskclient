@@ -52,6 +52,8 @@
     font-family: 'Ubuntu';
     font-weight: bold;
     line-height: 1.5;
+    width: 100%;
+    text-align: left;
 }
 
 .spot-page-content .details {
@@ -101,16 +103,23 @@
 
 
 @media (max-width: 550px) {
+    .spot-page-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .spot-page-content .image-div {
         -webkit-shape-outside: circle(50%);
         shape-outside: circle(50%);
         float: none;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        margin: 'auto';
+        margin-bottom: 2rem;
         width: 240px;
         min-width: 240px;
         height: 240px;
         min-height: 240px;
+        box-shadow: #333 0 0 10px;
     }
 
     .spot-page-content .details {
