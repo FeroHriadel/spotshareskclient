@@ -45,7 +45,7 @@ const AddSpot = () => {
         postedBy: '', //see useEffect below
     });
 
-    const { name, where, highlight, description, category, tags, long, lat } = values;
+    const { name, where, highlight, description, category, tags, long, lat, images, postedBy } = values;
 
     useEffect(() => {
         if (state && state.user && state.user.email) setValues({...values, postedBy: state.user.email});
@@ -86,8 +86,13 @@ const AddSpot = () => {
     //SUBMIT HANDLER
     const handleSubmit = e => {
         e.preventDefault();
+        if (images.length === 0) return setMessage('Please add at least one picture');
+        if (!name || name.trim() === '') return setMessage('Please fill in name');
+        if (!highlight || highlight.trim() === '') return setMessage('Please add a short highlight');
+        if (!category) return setMessage('Please select a category');
         if (Number(lat) > 49.3574 || Number(lat) < 47.64725) return setMessage('Latitude is outside Slovakia (47.64725 - 49.3574)');
         if (Number(long) < 16.60943 || Number(long) > 22.76178) return setMessage('Longitude is outside Slovakia (16.60943 - 22.76178)');
+        if (!postedBy) return setMessage('Sorry, your session expired. Please log in again.');
 
         const tagIDs = tags.map(t => t._id) //remove unnecessary data from tags
         spotCreate({
